@@ -25,7 +25,7 @@ const Home = () => {
             content= "Welcome to Byway, where learning knows no bounds. We believe that education is the key to personal and professional growth, and we're here to guide you on your journey to success."
             contentClass="text-gray-700 sm:text-[12px] md:text-[14px] lg:text-[18px]"
             btntext="Start your instructor journey"
-            btnClass="bg-black text-white sm:text-[10px] md:text-[13px] lg:text-[16px]"
+            btnClass="bg-black text-white p-4 sm:text-[10px] md:text-[13px] lg:text-[16px]"
           />
           <div>
             <img src={heroimg} alt="heroimg" className="md:w-[410px] lg:w-[500px] w-[500px] " />
@@ -147,7 +147,7 @@ const Home = () => {
                 content= "Instructors from around the world teach millions of students on Byway. We provide the tools and skills to teach what you love."
                 contentClass="text-gray-800"
                 btntext="Start Your Instructor Journey"
-                btnClass="bg-black text-white"
+                btnClass="bg-black text-white p-4"
                 icon={arrow}
               />
 
@@ -161,7 +161,7 @@ const Home = () => {
                 content= "Learners around the world are launching new careers, advancing in their fields, and enriching their lives."
                 contentClass="text-gray-800"
                 btntext="Checkout Courses"
-                btnClass="bg-black text-white"
+                btnClass="bg-black text-white p-4"
                 icon={arrow}
               />
 
