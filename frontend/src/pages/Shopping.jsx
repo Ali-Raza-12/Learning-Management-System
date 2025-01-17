@@ -1,12 +1,13 @@
 import rightChevron from '../assets/Categories/chevron-right.svg'
 import courseImage from '../assets/Shopping/image 3.svg'
 import ratings from '../assets/Categories/ratings.svg'
+import Button from '../components/Button/Button'
 
 
 const Shopping = () => {
   return (
     <>
-      <div className='w-full h-auto px-[40px] my-10 '>
+      <div className='w-full h-[100vh] px-[40px] my-10 '>
 
         {/* Page Details  */}
         <div className='flex w-full h-auto items-end gap-5'>
@@ -16,26 +17,27 @@ const Shopping = () => {
           <div className='w-full h-[24px] flex gap-[8px]'>
             <p className='text-grey7'>Categories</p>
             <img src={rightChevron} alt="" />
-            <p className='text-grey7'></p>
+            <p className='text-grey7'>Details</p>
             <img src={rightChevron} alt="" />
-            <p className='text-primary6'>Introduction to User Experience</p>
+            <p className='text-primary6'>Shopping Cart</p>
           </div>
         </div>
 
         {/* Cart Content Main  */}
-        <div className='w-full h-auto'>
+        <div className='w-full h-auto flex justify-between'>
 
           {/* Cart Courses Left */}
           <div className='w-[880px] h-auto my-5'>
 
+            {/* Border  */}
             <div className='w-full h-auto'>
               <p className='text-grey7'>1 Course in cart</p>
               <p className='border border-grey3'></p>
             </div>
 
-            <div className='my-2'>
+            <div className='w-full h-auto my-2'>
 
-              <div className='w-full h-auto rounded-[8px] border border-grey3 p-2 m-1'>
+              <div className='w-full h-auto flex rounded-[8px] border border-grey3 p-2 m-1'>
                 <div className='max-w-[675px] h-auto flex gap-[8px]'>
                   <img src={courseImage} alt="course image" />
                   <div className='w-[675px] flex flex-col gap-[8px]'>
@@ -53,9 +55,12 @@ const Shopping = () => {
                     </p>
                   </div>
                 </div>
+                <div className='w-full h-auto mr-2'>
+                  <p className='flex justify-end font-bold'>$45.00</p>
+                </div>
               </div>
 
-              <div className='w-full h-auto rounded-[8px] border border-grey3 p-2 m-1'>
+              <div className='w-full h-auto flex rounded-[8px] border border-grey3 p-2 m-1'>
                 <div className='max-w-[675px] h-auto flex gap-[8px]'>
                   <img src={courseImage} alt="course image" />
                   <div className='w-[675px] flex flex-col gap-[8px]'>
@@ -73,9 +78,12 @@ const Shopping = () => {
                     </p>
                   </div>
                 </div>
+                <div className='w-full h-auto mr-2'>
+                  <p className='flex justify-end font-bold'>$45.00</p>
+                </div>
               </div>
 
-              <div className='w-full h-auto rounded-[8px] border border-grey3 p-2 m-1'>
+              <div className='w-full h-auto flex rounded-[8px] border border-grey3 p-2 m-1'>
                 <div className='max-w-[675px] h-auto flex gap-[8px]'>
                   <img src={courseImage} alt="course image" />
                   <div className='w-[675px] flex flex-col gap-[8px]'>
@@ -92,10 +100,50 @@ const Shopping = () => {
                       <span className='text-orange-500'>Remove</span>
                     </p>
                   </div>
+                </div>
+                <div className='w-full h-auto mr-2'>
+                  <p className='flex justify-end font-bold'>$45.00</p>
                 </div>
               </div>
 
             </div>
+
+          </div>
+
+          {/* Cart Right Portion  */}
+          <div className='w-[330px] h-[251px] flex flex-col gap-[8px] my-10'>
+            <h4 className='font-bold'>Order Details</h4>
+            <div className='w-full h-auto p-2 border border-grey3 rounded-[16px]'>
+
+              <div className='w-full h-auto my-2'>
+                <div className='flex justify-between my-3'>
+                  <p className='text-grey9'>Price</p>
+                  <p className='text-grey9 font-bold'>$300.00</p>
+                </div>
+
+                <div className='flex justify-between my-3'>
+                  <p className='text-grey9'>Discount</p>
+                  <p className='text-grey9 font-bold'>-$10.00</p>
+                </div>
+
+                <div className='flex justify-between my-3'>
+                  <p className='text-grey9'>Tax</p>
+                  <p className='text-grey9 font-bold'>$20.00</p>
+                </div>
+              </div>
+
+              <p className='border border-grey3 w-full my-3'></p>
+
+              <div className='flex justify-between my-3'>
+                <p className='text-grey9'>Total</p>
+                <p className='text-grey9 font-bold'>$290.00</p>
+              </div>
+
+            </div>
+            
+            <Button text='Proceed to Checkout' btnClass='w-full h-auto bg-black text-white p-3 flex justify-center'/>
+
+
           </div>
         </div>
       </div>
