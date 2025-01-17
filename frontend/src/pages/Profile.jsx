@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from '../assets/Profile/Image.svg';
 import profileImage from '../assets/Profile/Ellipse 53.svg';
 import Button from '../components/Button/Button';

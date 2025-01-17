@@ -1,93 +1,114 @@
-import image from '../../assets/logo.svg'
+import image from '../../assets/logo.svg';
 import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const Navbar = () => {
-    const [openMenu, setOpenMenu] = useState(false);
-
-    const toggleMenu = () => {
-        setOpenMenu(!openMenu);
-    };
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <>
-            <div className="w-full h-[65px] flex justify-between items-center xl:px-10 lg:px-8 px-5">
-                <div className="w-[83px] h-auto flex items-center justify-center">
+        <nav className="bg-white border-gray-200 shadow-md p-4">
+            <div className="max-w-screen-xl mx-auto flex justify-between items-center">
+                {/* Logo */}
+                <div className="flex items-center gap-2">
                     <img className="w-[31px] h-[40px]" src={image} alt="logo" />
-                    <a href='/' className='font-inter font-medium text-[16px] text-grey7'>Byway</a>
+                    <a href="/" className="font-medium text-lg text-gray-800">Byway</a>
                 </div>
 
-                <div className='leading-5 invisible md:visible'>
-                    <a href="/category" className='font-inter font-medium text-[14px] text-gray-700'>Categories</a>
-                </div>
+                {/* Links and Search */}
+                <div className="flex items-center gap-6">
+                    {/* Categories */}
+                    <a href="/category" className="text-gray-700 hidden md:flex hover:text-blue-600">Categories</a>
 
-                <div className="relative invisible md:visible xl:w-1/2 lg:w-[400px] w-[200px] h-[40px] gap-[10px] pl-[10px] py-[10px] rounded-[8px] border border-gray-700 flex items-center">
-                    <CiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 w-[20px] h-[20px] text-gray-700" />
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="bg-white w-full pl-12 pr-4 outline-none font-inter font-medium text-gray-700 leading-[20px]"
-                    />
-                </div>
-
-                <div className='leading-5 invisible md:visible'>
-                    <a href="/category" className='font-inter font-medium text-[14px] text-gray-700'>Teach on Byway</a>
-                </div>
-
-                <div className='w-[206px] h-[40px] flex gap-[24px] items-center'>
-                    <CiShoppingCart className='w-[24px] h-[24px] text-grey-700' />
-
-                    <Link to='/login'>
-                        <button className='flex gap-[10px] p-[10px] leading-[20px] font-inter font-medium text-[14px] text-grey-700'>Log In</button>
-                    </Link>
-
-                    <Link to='/signup'>
-                        <button className='flex gap-[10px] p-[10px] leading-[20px] font-inter font-medium text-[14px] bg-grey7 text-white'>Sign Up</button>
-                    </Link>
-                </div>
-
-                {/* Hamburger Menu Icon moved here */}
-                <button
-                    onClick={toggleMenu}
-                    className="md:hidden flex items-center justify-center p-2"
-                >
-                    <svg
-                        className="w-6 h-6 text-gray-700"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 17 14"
-                    >
-                        <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M1 1h15M1 7h15M1 13h15"
+                    {/* Search Bar */}
+                    <div className="relative items-center hidden sm:flex">
+                        <CiSearch className="absolute left-3 text-gray-500 w-5 h-5" />
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="pl-10 outline-none pr-4 py-2 border rounded-lg text-gray-600"
                         />
-                    </svg>
-                </button>
-            </div>
+                    </div>
 
-            {/* Mobile Menu - Dropdown for smaller screens */}
-            <div
-                className={`md:hidden absolute top-[65px] left-0 w-full bg-white border-t border-gray-700 ${
-                    openMenu ? 'flex' : 'hidden'
-                } flex-col gap-4 p-4`}
-            >
-                <a href="/category" className="font-inter font-medium text-[14px] text-gray-700">Categories</a>
-                <a href="/category" className="font-inter font-medium text-[14px] text-gray-700">Teach on Byway</a>
+                    {/* Cart Icon */}
+                    <CiShoppingCart className="w-8 h-8 text-gray-700 hover:text-blue-600" />
 
-                <div className="relative w-full h-[40px] gap-[10px] pl-[10px] py-[10px] rounded-[8px] border border-gray-700 flex items-center">
-                    <CiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 w-[20px] h-[20px] text-gray-700" />
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="bg-white w-full pl-12 pr-4 outline-none font-inter font-medium text-gray-700 leading-[20px]"
-                    />
+                    {/* Toggle Button for md devices */}
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-expanded={isMenuOpen}
+                        className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none"
+                    >
+                        <span className="sr-only">Toggle menu</span>
+                        <svg
+                            className="w-6 h-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            {isMenuOpen ? (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                            ) : (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            )}
+                        </svg>
+                    </button>
+
+                    {/* Links for lg devices */}
+                    <div className="hidden lg:flex items-center gap-4">
+                        <a href="/teach" className="text-gray-700 w-[125px] hover:text-blue-600">Teach on Byway</a>
+                        <Link to="/login">
+                            <button className="px-4 py-2 w-[100px] rounded-lg border border-gray-400 text-gray-700 hover:bg-gray-100">
+                                Log In
+                            </button>
+                        </Link>
+                        <Link to="/signup">
+                            <button className="px-4 py-2 w-[100px] bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                Sign Up
+                            </button>
+                        </Link>
+                    </div>
                 </div>
+
+                {isMenuOpen && (
+                    <div className="absolute top-[74px] right-0 px-5 bg-white shadow-lg rounded-lg w-[250px] py-4 z-50 lg:hidden border border-gray-200">
+                        {/* Search Bar */}
+                        <div className="block sm:hidden relative mb-3">
+                            <CiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                className="pl-10 pr-4 py-2 w-full outline-none border rounded-lg text-grey7"
+                            />
+                        </div>
+
+
+                        {/* Dropdown Links */}
+                        <a
+                            href="/category"
+                            className="block md:hidden px-4 py-2 text-gray-700 hover:text-white hover:bg-blue-600 rounded transition duration-200"
+                        >
+                            Categories
+                        </a>
+                        <a
+                            href="/teach"
+                            className="block px-4 py-2 text-gray-700 hover:text-white hover:bg-blue-600 rounded transition duration-200"
+                        >
+                            Teach on Byway
+                        </a>
+                        <Link to="/signup">
+                            <button
+                                className="block w-full text-left px-4 py-2 text-blue-600 hover:text-white hover:bg-blue-700 rounded transition duration-200"
+                            >
+                                SignIn
+                            </button>
+                        </Link>
+                    </div>
+                )}
+
             </div>
-        </>
+        </nav>
     );
 };
 
