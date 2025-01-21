@@ -15,76 +15,105 @@ const Home = () => {
       {/* Border  */}
       <p className="w-full border-t border-gray-300"></p>
 
-      <div className="w-full h-auto md:px-6 lg:px-8 px-10">
+      <div className="w-full h-auto px-[5px] xs:px-[10px] sm:px-[20px] md:px-[40px]  flex flex-col items-center">
 
-        {/* Hero Section  */}
-        <div className="w-full h-auto flex items-center justify-between my-6 gap-4">
-          <HalfComp
-            title='Unlock Your Potential with Byway'
-            titleClass="text-[40px] font-extrabold text-gray-900 leading-10 sm:text-[30px] md:text-[35px] lg:text-[40px]"
-            content= "Welcome to Byway, where learning knows no bounds. We believe that education is the key to personal and professional growth, and we're here to guide you on your journey to success."
-            contentClass="text-gray-700 sm:text-[12px] md:text-[14px] lg:text-[18px]"
-            btntext="Start your instructor journey"
-            btnClass="bg-black text-white p-4 sm:text-[10px] md:text-[13px] lg:text-[16px]"
-          />
-          <div>
-            <img src={heroimg} alt="heroimg" className="md:w-[410px] lg:w-[500px] w-[500px] " />
+        {/* Hero Section */}
+        <div className="w-full h-auto grid grid-cols-1 md:grid-cols-2 items-center my-6 gap-8">
+          {/* Text Content */}
+          <div className="w-full h-auto flex flex-col gap-6">
+            <HalfComp
+              title="Unlock Your Potential with Byway"
+              titleClass="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-gray-900 leading-tight"
+              content="Welcome to Byway, where learning knows no bounds. We believe that education is the key to personal and professional growth, and we're here to guide you on your journey to success."
+              contentClass="text-gray-700 text-[14px] sm:text-[16px] md:text-[18px] leading-7"
+              btntext="Start your instructor journey"
+              btnClass="mx-auto md:mx-0 bg-black text-white p-2 sm:p-4 text-xs sm:text-sm"
+            />
+          </div>
+
+          {/* Hero Image */}
+          <div className="w-full h-auto flex justify-center items-center">
+            <img
+              src={heroimg}
+              alt="heroimg"
+              className="max-w-[300px] md:max-w-[480px] lg:max-w-[600px] object-cover"
+            />
           </div>
         </div>
 
-        {/* Counts  */}
-        <div className="w-full h-auto items-center py-[40px] flex flex-wrap justify-between my-[30px]">
-          {counts.map((count, index) => (
-            <div key={index} className="mt-6 gap-[6px] flex flex-col items-center justify-center">
-              <h2 className="text-3xl text-grey9 font-bold">{count.no}</h2>
-              <p className="text-grey9 font-normal">{count.title}</p>
-            </div>
-          ))}
-        </div>
 
-        {/* Top Categories  */}
-        <div className="w-full h-auto flex flex-col my-[30px]">
-          <HomeBanner title='Top Categories' btnText="See All" />
-
-          <div className="w-full h-auto flex flex-wrap justify-between">
-            {TopCategories.map((category, index) => (
-              <div key={index} className="w-[286px] h-[224px] mt-6 py-[24px] px-[93px] flex flex-col items-center justify-center gap-[8px] rounded-[16px] border border-gray-300 shadow-lg">
-                <img src={category.Image} alt="" />
-                <h3 className="text-xl text-grey9 font-bold">{category.name}</h3>
-                <p className="text-grey7">{category.no}</p>
+        {/* Counts */}
+        <div className="w-full h-auto flex justify-center items-center py-[40px] my-[10px]">
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {counts.map((count, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center text-center gap-[6px]"
+              >
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+                  {count.no}
+                </h2>
+                <p className="text-sm sm:text-base lg:text-lg font-normal text-gray-700">
+                  {count.title}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
+
+        {/* Top Categories  */}
+        <div className="w-full h-auto flex flex-col my-[30px]">
+          <HomeBanner title='Top Categories' btnText="See All" />
+
+          <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
+            {TopCategories.map((category, index) => (
+              <div key={index} className="flex flex-col items-center justify-center gap-4 py-[24px] px-[32px] rounded-[16px] border border-gray-300 shadow-lg">
+                <img src={category.Image} alt="" className="w-20 h-20 sm:w-[120px] sm:h-[120px] object-contain" />
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">{category.name}</h3>
+                <p className="text-sm text-gray-700">{category.no}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+
         {/* Top Courses  */}
-        <div className="w-full h-auto flex flex-col">
+        <div className="w-full h-auto flex flex-col my-[30px]">
           <HomeBanner title="Top Courses" btnText="See All" />
 
-          <div className="flex flex-wrap justify-between">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {TopCourses.map((course, index) => (
-              <div key={index} className="mt-6 p-[8px] border border-gray-300 rounded-[16px] flex flex-col gap-[8px]">
-                <img src={course.img} alt="course-img" />
-                <div className="flex flex-col gap-[8px]">
-                  <p className="text-base text-grey9 font-bold">{course.title}</p>
-                  <p className="font-light text-grey7">{course.subheading}</p>
-                  <div className="flex gap-[8px]">
-                    <img src={course.rate[0].img} alt="img" />
-                    <p className="text-sm text-grey7 font-normal">{course.rate[0].title}</p>
+              <div
+                key={index}
+                className="mt-6 p-4 border border-gray-300 rounded-[16px] flex flex-col gap-4 shadow-md hover:shadow-lg transition-all"
+              >
+                <img
+                  src={course.img}
+                  alt="course-img"
+                  className="w-full h-[200px] sm:h-[250px] object-cover rounded-md"
+                />
+                <div className="flex flex-col gap-3">
+                  <p className="text-base sm:text-lg font-bold text-gray-900">{course.title}</p>
+                  <p className="font-light text-sm text-gray-600">{course.subheading}</p>
+                  <div className="flex gap-2 items-center">
+                    <img src={course.rate[0].img} alt="rate-img" className="w-20" />
+                    <p className="text-sm text-gray-600 font-normal">{course.rate[0].title}</p>
                   </div>
-                  <p className="text-xs text-grey7">{course.para}</p>
-                  <p>{course.price}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">{course.para}</p>
+                  <p className="font-semibold text-base sm:text-lg text-gray-800">{course.price}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
+
         {/* Top Instructor */}
-        <div className="flex flex-col gap-[24px my-[30px]">
+        <div className="w-full h-auto flex flex-col gap-[24px my-[30px]">
           <HomeBanner title="Top Instructor" btnText="See All" />
 
-          <div className="flex flex-wrap justify-between">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
             {TopInstructor.map((instructor, index) => (
               <div key={index} className="mt-6 p-[16px] border border-gray-300 rounded-[16px] flex flex-col gap-[16px] items-center justify-center">
                 <img src={instructor.img} alt="instructor" />
@@ -108,7 +137,7 @@ const Home = () => {
         {/* Testimonials  */}
         <div className="w-full h-auto my-[30px]">
           <div className="flex justify-between">
-            <p className="text-2xl text-grey9 font-bold">What Our Customer Say
+            <p className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-grey9 font-bold'>What Our Customer Say
               <br />
               <span>About Us</span>
             </p>
@@ -118,7 +147,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap lg:flex-nowrap gap-[8px] mt-[25px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[8px] mt-[25px]">
             {Testimonials.map((testimonial, index) => (
               <div key={index} className="mt-4 flex flex-col gap-[8px] p-[24px] rounded-[16px] border border-grey3 shadow-md">
                 <img className="w-[36px] h-[36px]" src={testimonial.img} alt="img" />
@@ -136,39 +165,46 @@ const Home = () => {
         </div>
 
         {/* Become Instructor  */}
-        <div className="w-full h-auto flex flex-col gap-[60px] py-[30px]">
+        <div className="w-full h-auto flex flex-col items-center gap-[60px] py-[30px]">
+          <div className="w-full flex flex-col gap-3 md:flex-row md:justify-between items-center">
+            <img
+              className="w-full max-w-[250px] sm:max-w-[300px] lg:max-w-[400px] h-auto object-cover"
+              src={image1}
+              alt=""
+            />
 
-          <div className="flex items-center justify-between mx-10 gap-5">
-            <img className="w-[400px] h-[425px]" src={image1} alt="" />
-
-              <HalfComp 
-                title='Become an Instructor'
-                titleClass="text-xl text-black font-bold"
-                content= "Instructors from around the world teach millions of students on Byway. We provide the tools and skills to teach what you love."
-                contentClass="text-gray-800"
+            <div className='w-full max-w-full md:max-w-[400px] lg:max-w-[549px] h-auto'>
+              <HalfComp
+                title="Become an Instructor"
+                titleClass="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-gray-900 leading-tight"
+                content="Instructors from around the world teach millions of students on Byway. We provide the tools and skills to teach what you love."
+                contentClass="text-gray-700 text-[14px] sm:text-[16px] md:text-[18px] leading-7"
                 btntext="Start Your Instructor Journey"
-                btnClass="bg-black text-white p-4"
+                btnClass="mx-auto md:mx-0 bg-black text-white p-2 sm:p-4 text-xs sm:text-sm"
                 icon={arrow}
+                iconClass="w-4 h-4 sm:w-5 sm:h-5"
               />
-
+            </div>
           </div>
 
-          <div className="flex items-center justify-between mx-10 gap-5">
-
-              <HalfComp 
+          <div className="w-full flex flex-col gap-3 md:flex-row md:justify-between items-center">
+            <div className='w-full max-w-full md:max-w-[400px] lg:max-w-[549px] h-auto'>
+              <HalfComp
                 title='Transform your life through education'
-                titleClass="text-xl text-black font-bold"
-                content= "Learners around the world are launching new careers, advancing in their fields, and enriching their lives."
-                contentClass="text-gray-800"
+                titleClass="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-gray-900 leading-tight"
+                content="Learners around the world are launching new careers, advancing in their fields, and enriching their lives."
+                contentClass="text-gray-700 text-[14px] sm:text-[16px] md:text-[18px] leading-7"
                 btntext="Checkout Courses"
-                btnClass="bg-black text-white p-4"
+                btnClass="mx-auto md:mx-0 bg-black text-white p-2 sm:p-4 text-xs sm:text-sm"
                 icon={arrow}
+                iconClass="w-4 h-4 sm:w-5 sm:h-5"
               />
+            </div>
 
-            <img className="w-[400px] h-[425px] object-contain" src={image2} alt="" />
-          
+            <img className="w-full max-w-[250px] sm:max-w-[300px] lg:max-w-[400px] h-auto object-cover" src={image2} alt="" />
           </div>
         </div>
+
 
       </div>
 
