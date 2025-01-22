@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, Category, Checkout, Course, Mentor, MessageInbox, Order, OrderCompletion, Profile, ProfileCourses, ProfileMessages, ProfileReviews, ProfileTeachers, Shopping, Signup, Login } from './pages'
+import { Home, Category, Checkout, Course, Mentor, MessageInbox, Order, OrderCompletion, Profile, ProfilePage, ProfileCourses, ProfileMessages, ProfileReviews, ProfileTeachers, Shopping, Signup, Login } from './pages'
 import Layout from './components/Layout/Layout';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -51,23 +51,11 @@ function App() {
           {/* Mentor  */}
           <Route path='/mentor' element={<Mentor />} />
 
-          {/* Profile  */}
-          <Route path='/profile' element={<Profile />} />
+          {/* Profile (Main Profile Page) */}
+          <Route path='/profile/*' element={<Profile />} />
 
-          {/* Profile-Courses  */}
-          <Route path='/profile-courses' element={<ProfileCourses />} />
-
-          {/* Profile-Teachers  */}
-          <Route path='/profile-teachers' element={<ProfileTeachers />} />
-
-          {/* Profile-Messages  */}
-          <Route path='/profile-messages' element={<ProfileMessages />} />
-
-          {/* Message-Inbox  */}
-          <Route path='/message-inbox' element={<MessageInbox />} />
-
-          {/* Profile-Reviews  */}
-          <Route path='/profile-reviews' element={<ProfileReviews />} />
+          {/* Profile Page */}
+          {/* <Route path="/profile-page" element={<ProfilePage />} /> */}
 
           {/* Sign Up  */}
           <Route path='/signup' element={<Signup />} />

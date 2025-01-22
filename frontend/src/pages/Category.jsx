@@ -4,7 +4,7 @@ import downChev from '../assets/Categories/down-chevron.svg'
 import upChevron from '../assets/Categories/chevron-up.svg'
 import star5 from '../assets/Categories/ratings.svg'
 import HomeBanner from "../components/Home/HomeBanner"
-import { TopCourses, TopInstructor} from "../data/dummy"
+import { TopCourses, TopInstructor } from "../data/dummy"
 import leftChev from '../assets/Categories/left-chevron.svg'
 import rightChev from '../assets/Categories/chevron-right.svg'
 
@@ -86,7 +86,7 @@ const Category = () => {
               <div className="w-full h-auto flex flex-col">
                 <HomeBanner title="Top Courses" btnText="See All" />
 
-                <div className="flex flex-wrap justify-between">
+                <div className="grid grid-cols-3 gap-2">
                   {[...Array(9)].map((_, index) => (
                     <div key={index} className="mt-6 p-[8px] border border-gray-300 rounded-[16px] flex flex-col gap-[8px]">
                       <img src={TopCourses[0]?.img} alt="course-img" />
@@ -104,15 +104,19 @@ const Category = () => {
                   ))}
                 </div>
 
-                <div className='w-full h-[41px] flex justify-center my-[20px] items-center'>
-
-                  <img src={leftChev} className='border border-grey9 p-[8px]' alt="left" />
-                  <p className='p-[13px]'>1</p>
-                  <p className='p-[13px]'>2</p>
-                  <p className='p-[13px]'>3</p>
-                  <p className='p-[13px]'>4</p>
-                  <img src={rightChev} className='border border-grey9 p-[8px]' alt="right" />
+                <div className='w-full flex justify-center my-[20px] items-center'>
+                  <div className='flex border border-grey9 rounded-lg overflow-hidden shadow-lg'>
+                    <img src={leftChev} className='p-[8px] border-r border-grey9 cursor-pointer hover:bg-grey2 transition' alt="left" />
+                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>1</p>
+                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>2</p>
+                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>3</p>
+                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>4</p>
+                    <img src={rightChev} className='p-[8px] cursor-pointer hover:bg-grey2 transition' alt="right" />
+                  </div>
                 </div>
+
+
+
               </div>
             </div>
 

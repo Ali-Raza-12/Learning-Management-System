@@ -7,6 +7,7 @@ export { default as MessageInbox } from './MessageInbox';
 export { default as Order } from './Order';
 export { default as OrderCompletion } from './OrderCompletion';
 export { default as Profile } from './Profile';
+export { default as ProfilePage } from './ProfilePage';
 export { default as ProfileCourses } from './ProfileCourses';
 export { default as ProfileMessages } from './ProfileMessages';
 export { default as ProfileReviews } from './ProfileReviews';

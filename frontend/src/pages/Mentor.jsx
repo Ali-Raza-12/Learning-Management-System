@@ -88,91 +88,91 @@ const Mentor = () => {
           </div>
         </div>
 
-         {/* Learners Reviews  */}
-                <div className='mt-16'>
-                  <h4 className='text-grey9 font-semibold'>Learner Reviews</h4>
-        
-                  <div className='flex gap-[139px]'>
-        
-                    {/* Review Percentage */}
-                    <div className='flex gap-[139px] my-5'>
-                      <div className='w-[186px] h-[177px] flex flex-col  gap-4'>
-                        <div className='flex gap-1'>
-                          <img src={star} alt="star rating" />
-                          <p>4.6</p>
-                          <p>146,951 reviews</p>
-                        </div>
-                        <img src={frame} alt="ratings" />
-                      </div>
+        {/* Learners Reviews  */}
+        <div className='mt-16'>
+          <h4 className='text-grey9 font-semibold'>Learner Reviews</h4>
+
+          <div className='flex gap-[139px]'>
+
+            {/* Review Percentage */}
+            <div className='flex gap-[139px] my-5'>
+              <div className='w-[186px] h-[177px] flex flex-col  gap-4'>
+                <div className='flex gap-1'>
+                  <img src={star} alt="star rating" />
+                  <p>4.6</p>
+                  <p>146,951 reviews</p>
+                </div>
+                <img src={frame} alt="ratings" />
+              </div>
+            </div>
+
+            {/* Course Comments  */}
+            <div className='max-w-[949px] h-auto flex flex-col gap-[16px] my-10'>
+
+              <div className='flex items-center gap-20 max-w-[949px] h-40 px-2 rounded-[16px] border border-grey3'>
+
+                <div className='w-[100px]h-auto flex flex-col justify-center gap-[12px] ml-10'>
+                  <img src={profile} className='w-[60px]' alt="" />
+                  <p className='font-semibold truncate w-full'>Mark Doe</p>
+                </div>
+
+                <div className='w-full h-auto flex flex-col gap-2 mt-1'>
+                  <div className='flex gap-[28px]'>
+                    <div className='flex gap-[4px]'>
+                      <img src={star} alt="ratings" />
+                      <span>5</span>
                     </div>
-        
-                    {/* Course Comments  */}
-                    <div className='max-w-[949px] h-auto flex flex-col gap-[16px] my-10'>
-        
-                      <div className='flex items-center gap-20 max-w-[949px] h-40 px-2 rounded-[16px] border border-grey3'>
-        
-                        <div className='w-[100px]h-auto flex flex-col justify-center gap-[12px] ml-10'>
-                          <img src={profile} className='w-[60px]' alt="" />
-                          <p className='font-semibold truncate w-full'>Mark Doe</p>
-                        </div>
-        
-                        <div className='w-full h-auto flex flex-col gap-2 mt-1'>
-                          <div className='flex gap-[28px]'>
-                            <div className='flex gap-[4px]'>
-                              <img src={star} alt="ratings" />
-                              <span>5</span>
-                            </div>
-                            <div>
-                              <p className='text-grey7'>Reviewed on 22nd March, 2024</p>
-                            </div>
-                          </div>
-                          <p className='text-grey7'>I was initially apprehensive, having no prior design experience. But the instructor, John Doe, did an amazing job of breaking down complex concepts into easily digestible modules. The video lectures were engaging, and the real-world examples really helped solidify my understanding.</p>
-                        </div>
-                      </div>
-        
-                      <div className='flex items-center gap-20 max-w-[949px] h-40 px-2 rounded-[16px] border border-grey3'>
-        
-                        <div className='w-[100px]h-auto flex flex-col justify-center gap-[12px] ml-10'>
-                          <img src={profile} className='w-[60px]' alt="" />
-                          <p className='font-semibold truncate w-full'>Mark Doe</p>
-                        </div>
-        
-                        <div className='w-full h-auto flex flex-col gap-2 mt-1'>
-                          <div className='flex gap-[28px]'>
-                            <div className='flex gap-[4px]'>
-                              <img src={star} alt="ratings" />
-                              <span>5</span>
-                            </div>
-                            <div>
-                              <p className='text-grey7'>Reviewed on 22nd March, 2024</p>
-                            </div>
-                          </div>
-                          <p className='text-grey7'>I was initially apprehensive, having no prior design experience. But the instructor, John Doe, did an amazing job of breaking down complex concepts into easily digestible modules. The video lectures were engaging, and the real-world examples really helped solidify my understanding.</p>
-                        </div>
-                      </div>
-        
-                      <div className='flex items-center gap-20 max-w-[949px] h-40 px-2 rounded-[16px] border border-grey3'>
-                        <div className='w-[100px]h-auto flex flex-col justify-center gap-[12px] ml-10'>
-                          <img src={profile} className='w-[60px]' alt="" />
-                          <p className='font-semibold truncate w-full'>Mark Doe</p>
-                        </div>
-        
-                        <div className='w-full h-auto flex flex-col gap-2 mt-1'>
-                          <div className='flex gap-[28px]'>
-                            <div className='flex gap-[4px]'>
-                              <img src={star} alt="ratings" />
-                              <span>5</span>
-                            </div>
-                            <div>
-                              <p className='text-grey7'>Reviewed on 22nd March, 2024</p>
-                            </div>
-                          </div>
-                          <p className='text-grey7'>I was initially apprehensive, having no prior design experience. But the instructor, John Doe, did an amazing job of breaking down complex concepts into easily digestible modules. The video lectures were engaging, and the real-world examples really helped solidify my understanding.</p>
-                        </div>
-                      </div>
+                    <div>
+                      <p className='text-grey7'>Reviewed on 22nd March, 2024</p>
                     </div>
                   </div>
+                  <p className='text-grey7'>I was initially apprehensive, having no prior design experience. But the instructor, John Doe, did an amazing job of breaking down complex concepts into easily digestible modules. The video lectures were engaging, and the real-world examples really helped solidify my understanding.</p>
                 </div>
+              </div>
+
+              <div className='flex items-center gap-20 max-w-[949px] h-40 px-2 rounded-[16px] border border-grey3'>
+
+                <div className='w-[100px]h-auto flex flex-col justify-center gap-[12px] ml-10'>
+                  <img src={profile} className='w-[60px]' alt="" />
+                  <p className='font-semibold truncate w-full'>Mark Doe</p>
+                </div>
+
+                <div className='w-full h-auto flex flex-col gap-2 mt-1'>
+                  <div className='flex gap-[28px]'>
+                    <div className='flex gap-[4px]'>
+                      <img src={star} alt="ratings" />
+                      <span>5</span>
+                    </div>
+                    <div>
+                      <p className='text-grey7'>Reviewed on 22nd March, 2024</p>
+                    </div>
+                  </div>
+                  <p className='text-grey7'>I was initially apprehensive, having no prior design experience. But the instructor, John Doe, did an amazing job of breaking down complex concepts into easily digestible modules. The video lectures were engaging, and the real-world examples really helped solidify my understanding.</p>
+                </div>
+              </div>
+
+              <div className='flex items-center gap-20 max-w-[949px] h-40 px-2 rounded-[16px] border border-grey3'>
+                <div className='w-[100px]h-auto flex flex-col justify-center gap-[12px] ml-10'>
+                  <img src={profile} className='w-[60px]' alt="" />
+                  <p className='font-semibold truncate w-full'>Mark Doe</p>
+                </div>
+
+                <div className='w-full h-auto flex flex-col gap-2 mt-1'>
+                  <div className='flex gap-[28px]'>
+                    <div className='flex gap-[4px]'>
+                      <img src={star} alt="ratings" />
+                      <span>5</span>
+                    </div>
+                    <div>
+                      <p className='text-grey7'>Reviewed on 22nd March, 2024</p>
+                    </div>
+                  </div>
+                  <p className='text-grey7'>I was initially apprehensive, having no prior design experience. But the instructor, John Doe, did an amazing job of breaking down complex concepts into easily digestible modules. The video lectures were engaging, and the real-world examples really helped solidify my understanding.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </>
