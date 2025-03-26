@@ -28,7 +28,7 @@ export default {
         'error': '#F87171',
       },
       fontFamily: {
-        'inter': ['Inter', 'sans-serif']
+        'Noto': ['Noto Serif', 'sans-serif']
       },
       
     },
