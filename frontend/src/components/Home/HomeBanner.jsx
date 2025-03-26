@@ -1,12 +1,25 @@
-const HomeBanner = ({ title, btnText}) => {
-  return (
-    <>
-        <div className='flex justify-between items-center'>
-            <p className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-grey9 font-bold'>{title}</p>
-            <button className='text-primary5 font-inter text-sm sm:text-base gap-[6px] px-[24px] py-[10px] rounded-[8px]'>{btnText}</button>
-        </div>
-    </>
-  )
-}
+import React from "react";
 
-export default HomeBanner
+const HomeBanner = ({ title, btnText, description }) => {
+return (
+  <div className="flex flex-col gap-2">
+    <div className="flex justify-between items-center">
+      <div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl text-gray-900 font-bold">
+          {title}
+        </h2>
+        {description && (
+          <p className="mt-2 text-gray-600 text-sm sm:text-base">
+            {description}
+          </p>
+        )}
+      </div>
+      <button className="text-blue-600 hover:text-blue-700 font-medium text-sm sm:text-base transition-colors duration-200 px-6 py-2 rounded-lg hover:bg-blue-50">
+        {btnText}
+      </button>
+    </div>
+  </div>
+);
+};
+
+export default HomeBanner;
