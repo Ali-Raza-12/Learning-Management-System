@@ -4,8 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const slides = [
   {
     logo: "Booz | Allen | Hamilton",
-    title:
-      "Booz Allen Hamilton Unlocks Talent Retention and Productivity Through Upskilling",
+    title: "Booz Allen Hamilton Unlocks Talent Retention and Productivity Through Upskilling",
     stats: [
       {
         percentage: "93%",
@@ -13,12 +12,10 @@ const slides = [
       },
       {
         percentage: "65%",
-        description:
-          "of learners noted a positive impact on their productivity",
+        description: "of learners noted a positive impact on their productivity",
       },
     ],
-    image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
   },
   {
     logo: "Tech | Solutions | Global",
@@ -33,8 +30,7 @@ const slides = [
         description: "improvement in process efficiency",
       },
     ],
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
   },
   {
     logo: "Innovation | Labs | Corp",
@@ -49,26 +45,28 @@ const slides = [
         description: "increase in customer engagement",
       },
     ],
-    image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
   },
 ];
 
 const trendingCategories = {
-  Business: [
-    { name: "Leadership", learners: "1,284,989" },
-    { name: "Management", learners: "987,654" },
-    { name: "Communication", learners: "876,543" },
-  ],
-  Technology: [
-    { name: "Python", learners: "2,345,678" },
-    { name: "Data Science", learners: "1,876,543" },
-    { name: "Machine Learning", learners: "1,234,567" },
+  Development: [
+    { name: "Python", learners: "47,702,363" },
+    { name: "Web Development", learners: "14,002,371" },
+    { name: "Data Science", learners: "7,774,335" },
   ],
   Design: [
-    { name: "UI/UX", learners: "876,543" },
-    { name: "Graphic Design", learners: "765,432" },
-    { name: "Figma", learners: "654,321" },
+    { name: "Blender", learners: "2,906,476" },
+    { name: "Graphic Design", learners: "4,490,035" },
+    { name: "User Experience (UX) Design", learners: "2,067,235" },
+  ],
+  Business: [
+    {
+      name: "PMI Project Management Professional (PMP)",
+      learners: "2,556,274",
+    },
+    { name: "Microsoft Power BI", learners: "4,621,423" },
+    { name: "Project Management", learners: "3,963,510" },
   ],
 };
 
@@ -88,102 +86,107 @@ const TrendingNow = () => {
   };
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 px-4 md:px-8 bg-white">
       <div className="container mx-auto">
         {/* Trending Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Trending Now
-          </h2>
-          <div className="mb-8">
-            <div className="flex items-center mb-2">
-              <h3 className="text-xl font-bold text-gray-900">
-                ChatGPT is a top skill
-              </h3>
-              <a
-                href="#"
-                className="text-primary hover:text-primary-hover text-sm ml-2 font-medium"
-              >
-                See ChatGPT courses →
-              </a>
-            </div>
-            <p className="text-sm text-gray-600">4,284,989 learners</p>
+        <div className="mb-20">
+          <div className="flex items-center justify-between mb-12 pb-8 border-b border-gray-200">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Trending Now</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+            <div>
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  ChatGPT is a top skill
+                </h3>
+                <div className="flex items-center space-x-3 mb-10">
+                  <span className="text-gray-600">
+                    4,290,073 learners
+                  </span>
+                  <span className="text-gray-300">•</span>
+                  <a
+                    href="#"
+                    className="text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    See courses →
+                  </a>
+                </div>
+
+                <button className="text-blue-600 text-lg border-2 border-blue-500 px-6 py-3 rounded-lg hover:bg-blue-50 font-medium transition-colors duration-200">
+                  Show all trending skills →
+                </button>
+              </div>
+            </div>
+
             {Object.entries(trendingCategories).map(([category, items]) => (
-              <div
-                key={category}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="text-lg font-semibold mb-4 text-gray-800">
+              <div key={category}>
+                <h3 className="text-xl font-semibold text-gray-800 mb-6">
                   {category}
                 </h3>
-                <ul className="space-y-4">
+                <div className="space-y-6">
                   {items.map((item) => (
-                    <li
+                    <button
                       key={item.name}
-                      className="border-b border-gray-100 pb-3 last:border-0"
+                      className="group w-full text-left transition-colors duration-200"
                     >
-                      <a
-                        href="#"
-                        className="text-primary hover:text-primary-hover block font-medium"
-                      >
-                        {item.name} →
-                      </a>
-                      <p className="text-sm text-gray-600 mt-1">
-                        {item.learners} learners
-                      </p>
-                    </li>
+                      <div className="space-y-2">
+                        <div className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 flex items-center">
+                          {item.name}
+                          <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-200 ml-1">
+                            →
+                          </span>
+                        </div>
+                        <p className="text-gray-500">
+                          {item.learners} learners
+                        </p>
+                      </div>
+                    </button>
                   ))}
-                </ul>
+                </div>
               </div>
             ))}
           </div>
-
-          <button className="mt-6 border border-primary text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-md text-sm font-medium transition-colors duration-200">
-            Show all trending skills →
-          </button>
         </div>
 
         {/* Slides Section */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
           <div className="flex flex-col md:flex-row">
             {/* Content Section */}
-            <div className="w-full md:w-1/2 p-8 md:p-12">
-              <h3 className="text-xl font-light text-gray-500 mb-6">
+            <div className="w-full md:w-1/2 p-8 md:p-10 lg:p-12">
+              <h3 className="text-lg text-gray-500 mb-6">
                 {slides[currentSlide].logo}
               </h3>
 
-              <h2 className="text-3xl font-bold mb-8 text-gray-800 leading-tight">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 leading-tight">
                 {slides[currentSlide].title}
               </h2>
 
-              <div className="space-y-8 mb-12">
+              <div className="space-y-8 mb-10">
                 {slides[currentSlide].stats.map((stat, index) => (
                   <div key={index}>
-                    <h4 className="text-5xl font-bold text-gray-900">
+                    <h4 className="text-4xl font-bold text-gray-900 mb-3">
                       {stat.percentage}
                     </h4>
-                    <p className="text-gray-600 mt-2 max-w-md">
+                    <p className="text-gray-600 max-w-md">
                       {stat.description}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <button className="bg-purple-600 text-white px-8 py-3 rounded-full font-medium hover:bg-purple-700 transition-colors duration-200">
+              <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-200 shadow-md hover:shadow-lg">
                 Read full story →
               </button>
 
-              {/* Pagination */}
-              <div className="mt-12 flex items-center space-x-4">
+              {/* Navigation */}
+              <div className="mt-12 flex items-center space-x-6">
                 <button
                   onClick={prevSlide}
-                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors border border-gray-200"
                   aria-label="Previous slide"
                 >
-                  <ChevronLeft className="w-6 h-6 text-gray-600" />
+                  <ChevronLeft className="w-5 h-5 text-gray-600" />
                 </button>
 
                 <div className="flex space-x-2">
@@ -191,8 +194,10 @@ const TrendingNow = () => {
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        currentSlide === index ? "bg-purple-600" : "bg-gray-300"
+                      className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${
+                        currentSlide === index
+                          ? "bg-blue-600"
+                          : "bg-gray-200 hover:bg-gray-300"
                       }`}
                       aria-label={`Go to slide ${index + 1}`}
                     />
@@ -201,10 +206,10 @@ const TrendingNow = () => {
 
                 <button
                   onClick={nextSlide}
-                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors border border-gray-200"
                   aria-label="Next slide"
                 >
-                  <ChevronRight className="w-6 h-6 text-gray-600" />
+                  <ChevronRight className="w-5 h-5 text-gray-600" />
                 </button>
               </div>
             </div>
@@ -214,7 +219,7 @@ const TrendingNow = () => {
               <img
                 src={slides[currentSlide].image}
                 alt="Business presentation"
-                className="w-full h-full object-cover min-h-[400px]"
+                className="w-full h-full object-cover min-h-[400px] md:min-h-[500px]"
               />
             </div>
           </div>
