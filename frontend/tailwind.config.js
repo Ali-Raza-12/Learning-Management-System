@@ -28,10 +28,12 @@ export default {
         'error': '#F87171',
       },
       fontFamily: {
-        'Noto': ['Noto Serif', 'sans-serif']
+        'Roboto': ['Roboto Slab', 'sans-serif']
       },
       
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }

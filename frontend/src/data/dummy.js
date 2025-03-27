@@ -176,34 +176,59 @@ export const TopInstructor = [
 
 export const Testimonials = [
     {
-        img: quotationIcon,
-        para: "\"Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.\"",
-        person: person,
-        name: 'Jane Doe',
-        exp: 'Designer',
+      name: "Sarah Johnson",
+      exp: "Web Development Student",
+      para: "The curriculum was incredibly well-structured and the hands-on projects really helped cement my understanding. I went from knowing nothing about coding to landing my dream job as a frontend developer in just 6 months!",
+      img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150"
     },
-
     {
-        img: quotationIcon,
-        para: "\"Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.\"",
-        person: person,
-        name: 'Jane Doe',
-        exp: 'Designer',
+      name: "Michael Chen",
+      exp: "Data Science Graduate",
+      para: "The interactive learning approach and real-world projects made complex concepts much easier to grasp. The mentorship support was exceptional, and I always felt guided throughout my learning journey.",
+      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=80&w=150"
     },
-
     {
-        img: quotationIcon,
-        para: "\"Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.\"",
-        person: person,
-        name: 'Jane Doe',
-        exp: 'Designer',
+      name: "Emily Rodriguez",
+      exp: "UX Design Student",
+      para: "The course exceeded my expectations in every way. The practical assignments and feedback from industry professionals helped me build a strong portfolio that impressed employers.",
+      img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150"
     },
-
     {
-        img: quotationIcon,
-        para: "\"Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.\"",
-        person: person,
-        name: 'Jane Doe',
-        exp: 'Designer',
+      name: "David Kim",
+      exp: "Mobile App Developer",
+      para: "The community support was incredible. Learning alongside other passionate developers and sharing experiences made the journey both enjoyable and enriching. I'm now confidently building my own apps!",
+      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150"
     },
-]
+    {
+      name: "Lisa Thompson",
+      exp: "AI Engineering Student",
+      para: "The cutting-edge curriculum kept me up to date with the latest industry trends. The practical projects helped me understand complex AI concepts and implement them in real-world scenarios.",
+      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      name: "James Wilson",
+      exp: "Cybersecurity Professional",
+      para: "The hands-on labs and real-world scenarios were invaluable in developing my security skills. The course prepared me well for industry certifications and real-world challenges.",
+      img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      name: "Anna Martinez",
+      exp: "Cloud Computing Graduate",
+      para: "The practical approach to cloud technologies and infrastructure made complex concepts accessible. I appreciated how the course balanced theory with hands-on experience.",
+      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      name: "Tom Anderson",
+      exp: "Blockchain Developer",
+      para: "The in-depth coverage of blockchain fundamentals and smart contract development was excellent. The project-based learning approach helped me build a strong portfolio.",
+      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+      person: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+    }
+  ];

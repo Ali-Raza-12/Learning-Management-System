@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
+  Star,
 } from "lucide-react";
 import { allCourses, skillsByTopic, topics } from "../../data/CoursesData";
-// import Tooltip from "./Tooltip";
 
 const CoursesSection = () => {
   const [activeTab, setActiveTab] = useState("Data Science");
@@ -21,7 +21,7 @@ const CoursesSection = () => {
 
   const skillsContainerRef = useRef(null);
   const coursesContainerRef = useRef(null);
-  
+
   // Get skills for the active tab
   const currentSkills = skillsByTopic[activeTab]
     ? Object.entries(skillsByTopic[activeTab]).map(([name, courses]) => ({
@@ -122,6 +122,15 @@ const CoursesSection = () => {
     setDisplayCount((prev) => Math.min(prev + 4, filteredCourses.length));
   };
 
+  // Generate random rating (4.0 - 5.0)
+  const getRandomRating = () => (Math.random() * 1 + 4).toFixed(1);
+
+  // Generate random reviews count (100 - 5000)
+  const getRandomReviews = () => {
+    const reviews = Math.floor(Math.random() * 4900) + 100;
+    return reviews > 1000 ? `${(reviews / 1000).toFixed(1)}K` : reviews;
+  };
+
   return (
     <section className="py-16 px-4 bg-white overflow-hidden">
       <div className="container mx-auto">
@@ -142,7 +151,7 @@ const CoursesSection = () => {
             {topics.map((topic) => (
               <button
                 key={topic.name}
-                className={`pb-4 px-2 whitespace-nowrap transition-all duration-300 
+                className={`text-lg pb-4 px-2 whitespace-nowrap transition-all duration-300 
                   ${
                     activeTab === topic.name
                       ? "border-b-2 border-black font-semibold text-black"
@@ -182,7 +191,7 @@ const CoursesSection = () => {
                 }`}
                 onClick={() => setActiveSkill(skill.name)}
               >
-                <div className="text-2xl font-medium">{skill.name}</div>
+                <div className="text-xl font-medium">{skill.name}</div>
                 <div className="text-xs text-gray-400">{skill.learners}</div>
               </div>
             ))}
@@ -221,75 +230,61 @@ const CoursesSection = () => {
 
                 <div
                   ref={coursesContainerRef}
-                  className="grid grid-cols-4 gap-4 overflow-x-auto pb-4 scrollbar-hide"
-                  style={{ display: "flex" }}
+                  className="grid grid-cols-4 gap-6 overflow-x-auto pb-4 scrollbar-hide"
                 >
                   {displayedCourses.map((course) => (
                     <div
                       key={course.id}
-                      content={
-                        <div className="max-w-xs">
-                          <h4 className="font-bold mb-2">{course.title}</h4>
-                          <p className="text-sm mb-2">{course.description}</p>
-                          <ul className="text-sm space-y-1">
-                            <li className="flex items-center">
-                              <svg
-                                className="w-4 h-4 mr-1 text-green-400"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              Updated for 2025
-                            </li>
-                            <li className="flex items-center">
-                              <svg
-                                className="w-4 h-4 mr-1 text-green-400"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              Complete course materials
-                            </li>
-                            <li className="flex items-center">
-                              <svg
-                                className="w-4 h-4 mr-1 text-green-400"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              Certificate upon completion
-                            </li>
-                          </ul>
-                        </div>
-                      }
+                      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
                     >
-                      <div className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-lg cursor-pointer">
+                      <div className="relative">
                         <img
                           src={course.image}
                           alt={course.title}
-                          className="w-full h-36 object-cover rounded-lg"
+                          className="w-full h-48 object-cover"
                         />
-                        <h4 className="text-sm font-medium text-gray-900 mt-2">
+                        <div className="absolute bottom-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
+                          {course.duration || "10 hours"}
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h4 className="text-lg font-bold text-gray-900 mb-1 line-clamp-2">
                           {course.title}
                         </h4>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-sm text-gray-500 mb-2 line-clamp-2">
                           {course.description}
                         </p>
+                        <div className="flex items-center mb-2">
+                          <span className="text-yellow-500 font-bold mr-1">
+                            {getRandomRating()}
+                          </span>
+                          <div className="flex text-yellow-400 mr-1">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                size={14}
+                                fill={
+                                  i < Math.floor(parseFloat(getRandomRating()))
+                                    ? "currentColor"
+                                    : "none"
+                                }
+                              />
+                            ))}
+                          </div>
+                          <span className="text-gray-500 text-xs">
+                            ({getRandomReviews()})
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-900 font-bold">
+                            {course.price || "$49.99"}
+                          </span>
+                          {course.bestseller && (
+                            <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">
+                              Bestseller
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -307,20 +302,79 @@ const CoursesSection = () => {
               </div>
             </div>
 
+            {/* Mobile View */}
+            <div className="md:hidden grid grid-cols-1 gap-4">
+              {displayedCourses.map((course) => (
+                <div
+                  key={course.id}
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
+                >
+                  <div className="flex">
+                    <div className="w-1/3">
+                      <img
+                        src={course.image}
+                        alt={course.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="w-2/3 p-3">
+                      <h4 className="text-sm font-bold text-gray-900 mb-1 line-clamp-2">
+                        {course.title}
+                      </h4>
+                      <p className="text-xs text-gray-500 mb-1 line-clamp-2">
+                        {course.description}
+                      </p>
+                      <div className="flex items-center mb-1">
+                        <span className="text-yellow-500 font-bold text-xs mr-1">
+                          {getRandomRating()}
+                        </span>
+                        <div className="flex text-yellow-400 mr-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              size={12}
+                              fill={
+                                i < Math.floor(parseFloat(getRandomRating()))
+                                  ? "currentColor"
+                                  : "none"
+                              }
+                            />
+                          ))}
+                        </div>
+                        <span className="text-gray-500 text-2xs">
+                          ({getRandomReviews()})
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-900 font-bold text-sm">
+                          {course.price || "$49.99"}
+                        </span>
+                        {course.bestseller && (
+                          <span className="bg-yellow-100 text-yellow-800 text-2xs px-1 py-0.5 rounded">
+                            Bestseller
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             {/* Load More Button */}
             {displayCount < filteredCourses.length && (
-              <div className="text-center">
+              <div className="text-center mt-8">
                 <button
                   onClick={loadMoreCourses}
-                  className="text-lg text-blue-600 hover:text-blue-800 focus:outline-none"
+                  className="text-lg px-6 py-3 bg-white border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-50 transition-colors duration-200"
                 >
-                  Load more
+                  Load more courses
                 </button>
               </div>
             )}
           </>
         ) : (
-          <div className="text-center text-gray-500">
+          <div className="text-2xl text-center text-gray-500 py-10">
             No courses available for this skill.
           </div>
         )}
