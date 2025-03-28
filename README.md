@@ -11,7 +11,7 @@ A full-stack Learning Management System built with MongoDB, Express, React, and 
 - User authentication (Login/Signup)
 - Course browsing and enrollment
 - Interactive student dashboard
-- Responsive design with Material-UI
+- Responsive design
 
 ### Backend (Node.js/Express)
 - RESTful API with JWT authentication
@@ -23,7 +23,7 @@ A full-stack Learning Management System built with MongoDB, Express, React, and 
 
 | Area        | Technologies                          |
 |-------------|---------------------------------------|
-| Frontend    | React, Redux, Material-UI, Axios     |
+| Frontend    | React, Redux, Axios     |
 | Backend     | Node.js, Express, Mongoose, JWT      |
 | Database    | MongoDB (with Mongoose ODM)          |
 | Deployment  | Docker, AWS/Heroku (optional)        |
