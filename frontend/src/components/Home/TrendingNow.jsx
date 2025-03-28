@@ -86,34 +86,34 @@ const TrendingNow = () => {
   };
 
   return (
-    <section className="py-16 px-4 md:px-8 bg-white">
+    <section className="py-12 px-4 md:px-6 bg-white">
       <div className="container mx-auto">
         {/* Trending Section */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-12 pb-8 border-b border-gray-200">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Trending Now</h2>
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-200">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Trending Now</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             <div>
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <div className="mb-5">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
                   ChatGPT is a top skill
                 </h3>
-                <div className="flex items-center space-x-3 mb-10">
-                  <span className="text-gray-600">
+                <div className="flex items-center space-x-2 mb-8">
+                  <span className="text-gray-600 text-sm">
                     4,290,073 learners
                   </span>
                   <span className="text-gray-300">•</span>
                   <a
                     href="#"
-                    className="text-blue-600 hover:text-blue-700 font-medium"
+                    className="text-blue-600 hover:text-blue-700 font-medium text-sm"
                   >
                     See courses →
                   </a>
                 </div>
 
-                <button className="text-blue-600 text-lg border-2 border-blue-500 px-6 py-3 rounded-lg hover:bg-blue-50 font-medium transition-colors duration-200">
+                <button className="text-blue-600 text-base border-2 border-blue-500 px-5 py-2.5 rounded-md hover:bg-blue-50 font-medium transition-colors duration-200">
                   Show all trending skills →
                 </button>
               </div>
@@ -121,23 +121,23 @@ const TrendingNow = () => {
 
             {Object.entries(trendingCategories).map(([category, items]) => (
               <div key={category}>
-                <h3 className="text-xl font-semibold text-gray-800 mb-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">
                   {category}
                 </h3>
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {items.map((item) => (
                     <button
                       key={item.name}
                       className="group w-full text-left transition-colors duration-200"
                     >
-                      <div className="space-y-2">
-                        <div className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 flex items-center">
+                      <div className="space-y-1.5">
+                        <div className="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 flex items-center">
                           {item.name}
                           <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-200 ml-1">
                             →
                           </span>
                         </div>
-                        <p className="text-gray-500">
+                        <p className="text-gray-500 text-sm">
                           {item.learners} learners
                         </p>
                       </div>
@@ -150,51 +150,51 @@ const TrendingNow = () => {
         </div>
 
         {/* Slides Section */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
           <div className="flex flex-col md:flex-row">
             {/* Content Section */}
-            <div className="w-full md:w-1/2 p-8 md:p-10 lg:p-12">
-              <h3 className="text-lg text-gray-500 mb-6">
+            <div className="w-full md:w-1/2 p-6 md:p-8">
+              <h3 className="text-base text-gray-500 mb-4">
                 {slides[currentSlide].logo}
               </h3>
 
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 leading-tight">
+              <h2 className="text-2xl font-bold mb-6 text-gray-900 leading-tight">
                 {slides[currentSlide].title}
               </h2>
 
-              <div className="space-y-8 mb-10">
+              <div className="space-y-6 mb-8">
                 {slides[currentSlide].stats.map((stat, index) => (
                   <div key={index}>
-                    <h4 className="text-4xl font-bold text-gray-900 mb-3">
+                    <h4 className="text-3xl font-bold text-gray-900 mb-2">
                       {stat.percentage}
                     </h4>
-                    <p className="text-gray-600 max-w-md">
+                    <p className="text-gray-600 text-sm max-w-md">
                       {stat.description}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-200 shadow-md hover:shadow-lg">
+              <button className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-md font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-200 shadow-sm hover:shadow">
                 Read full story →
               </button>
 
               {/* Navigation */}
-              <div className="mt-12 flex items-center space-x-6">
+              <div className="mt-10 flex items-center space-x-4">
                 <button
                   onClick={prevSlide}
-                  className="p-2 rounded-full hover:bg-gray-100 transition-colors border border-gray-200"
+                  className="p-1.5 rounded-full hover:bg-gray-100 transition-colors border border-gray-200"
                   aria-label="Previous slide"
                 >
-                  <ChevronLeft className="w-5 h-5 text-gray-600" />
+                  <ChevronLeft className="w-4 h-4 text-gray-600" />
                 </button>
 
-                <div className="flex space-x-2">
+                <div className="flex space-x-1.5">
                   {slides.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
-                      className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${
+                      className={`w-2 h-2 rounded-full transition-colors duration-200 ${
                         currentSlide === index
                           ? "bg-blue-600"
                           : "bg-gray-200 hover:bg-gray-300"
@@ -206,10 +206,10 @@ const TrendingNow = () => {
 
                 <button
                   onClick={nextSlide}
-                  className="p-2 rounded-full hover:bg-gray-100 transition-colors border border-gray-200"
+                  className="p-1.5 rounded-full hover:bg-gray-100 transition-colors border border-gray-200"
                   aria-label="Next slide"
                 >
-                  <ChevronRight className="w-5 h-5 text-gray-600" />
+                  <ChevronRight className="w-4 h-4 text-gray-600" />
                 </button>
               </div>
             </div>
@@ -219,7 +219,7 @@ const TrendingNow = () => {
               <img
                 src={slides[currentSlide].image}
                 alt="Business presentation"
-                className="w-full h-full object-cover min-h-[400px] md:min-h-[500px]"
+                className="w-full h-full object-cover min-h-[350px] md:min-h-[400px]"
               />
             </div>
           </div>
