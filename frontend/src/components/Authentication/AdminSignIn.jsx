@@ -4,10 +4,10 @@ import { Mail } from "lucide-react";
 
 import signupImage from "../../assets/Signup-page/34554-technology.gif";
 
-const Signup = () => {
+const AdminSignIn = () => {
   return (
     <>
-      <div className="min-h-screen my-10 bg-white flex">
+      <div className="min-h-screen bg-white flex">
         {/* Left side with illustration */}
         <div className="w-1/2 p-4 flex items-center justify-center">
           <img
@@ -18,11 +18,11 @@ const Signup = () => {
         </div>
 
         {/* Right side with login form */}
-        <div className="w-1/2 p-6 flex items-center justify-center">
+        <div className="w-1/2 p-4 flex items-center justify-center">
           <div className="w-full max-w-md space-y-8">
             <div className="text-center">
               <h2 className="text-3xl font-bold text-gray-900">
-              Sign up with email
+                Admin Log In 
               </h2>
             </div>
 
@@ -30,21 +30,6 @@ const Signup = () => {
               //   onSubmit={handleSubmit}
               className="space-y-6"
             >
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Full name
-                </label>
-                <input
-                  type="name"
-                  id="name"
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                  placeholder="Full name"
-                  required
-                />
-              </div>
-
               <div>
                 <label htmlFor="email" className="sr-only">
                   Email
@@ -75,31 +60,16 @@ const Signup = () => {
                 />
               </div>
 
-              <div>
-                <label htmlFor="repeat-password" className="sr-only">
-                  Repeat Password
-                </label>
-                <input
-                  type="password"
-                  id="repeat-password"
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                  placeholder="Repeat Password"
-                  required
-                />
-              </div>
-
               <button
                 type="submit"
                 className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center gap-2"
               >
-                <Mail className="h-5 w-5" />
-                Continue with email
+                {/* <Mail className="h-5 w-5" /> */}
+                Login
               </button>
             </form>
 
-            <div className="relative">
+            {/* <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
               </div>
@@ -108,9 +78,9 @@ const Signup = () => {
                   Other log in options
                 </span>
               </div>
-            </div>
+            </div> */}
 
-            <div className="grid grid-cols-3 gap-4">
+            {/* <div className="grid grid-cols-3 gap-4">
               <button className="flex items-center justify-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                 <img
                   src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
@@ -132,19 +102,19 @@ const Signup = () => {
                   className="h-5 object-contain"
                 />
               </button>
-            </div>
+            </div> */}
 
-            <div className="text-center space-y-4">
+            {/* <div className="text-center space-y-4">
               <p className="text-gray-600">
-                Already have an account?{" "}
+                Don't have an account?{" "}
                 <Link
-                  to="/login"
+                  to="/signup"
                   className="font-medium text-purple-600 hover:text-purple-500"
                 >
-                  Log in
+                  Sign up
                 </Link>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -152,4 +122,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default AdminSignIn;

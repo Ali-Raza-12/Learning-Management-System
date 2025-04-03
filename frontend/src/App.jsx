@@ -22,6 +22,7 @@ import {
 import Layout from "./components/Layout/Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -77,6 +78,10 @@ function App() {
 
           {/* Login  */}
           <Route path="/login" element={<Login />} />
+
+          {/* Admin Login  */}
+          <Route path="/admin-login" element={<AdminLogin />} /> 
+
         </Routes>
       </Layout>
     </BrowserRouter>

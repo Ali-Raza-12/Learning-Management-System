@@ -44,6 +44,21 @@ const Signin = () => {
               />
             </div>
 
+            <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+
             <button
               type="submit"
               className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center gap-2"
