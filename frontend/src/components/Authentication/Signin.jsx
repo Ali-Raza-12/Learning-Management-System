@@ -1,137 +1,108 @@
-import image from '../../assets/Signup-page/Frame 427319049.svg';
-import Button from '../Button/Button';
-import icon from '../../assets/chevron-right.svg';
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Mail } from "lucide-react";
+
+import signupImage from "../../assets/Signup-page/34554-technology.gif";
 
 const Signin = () => {
-    const [error, setErrors] = useState({});
-    const [formData, setFormData] = useState({ email: '', password: '' });
-    const [loading, setLoading] = useState(false);
+  return (
+    <div className="min-h-screen my-10 bg-white flex">
+      {/* Left side with illustration */}
+      <div className="w-1/2 p-4 flex items-center justify-center">
+        <img
+          src={signupImage}
+          alt="Learning Illustration"
+          className="w-full max-w-md"
+        />
+      </div>
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
+      {/* Right side with login form */}
+      <div className="w-1/2 p-4 flex items-center justify-center">
+        <div className="w-full max-w-md space-y-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Log in to continue your learning journey
+            </h2>
+          </div>
 
-    const validateForm = () => {
-        const errors = {};
-        if (!formData.email) errors.email = 'Email is required';
-        if (!formData.password) errors.password = 'Password is required';
-        return errors;
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setErrors({});
-        
-        const validationErrors = validateForm();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            return;
-        }
-
-        setLoading(true);
-        const URL = 'http://127.0.0.1:8000/User/login/';
-
-        try {
-            const response = await axios.post(URL, formData);
-            const {access, refresh} = response.data;
-            
-            toast.success('Login successfully.');
-            setFormData({ email: '', password: '' });
-        } catch (error) {
-            if (error.response && error.response.status === 400) {
-                const backendErrors = error.response.data;
-                setErrors(backendErrors);
-            } else {
-                toast.error(error.response?.data?.message || 'Login failed');
-            }
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    return (
-        <div className='w-full h-auto flex justify-between'>
-            <div className='px-4'>
-                <div className='w-[692px] h-[706px] pl-6'>
-                    <div className="m-5">
-                        <h2 className="text-center text-[24px] font-bold text-gray-900">Sign in to your account</h2>
-                    </div>
-
-                    <form onSubmit={handleSubmit}>
-                        <div className="w-full my-4 flex flex-col gap-1">
-                            <label className="text-gray-900 font-semibold">Email</label>
-                            <div>
-                                <input
-                                    className="w-full border border-gray-300 p-[10px] rounded-[8px] text-gray-900"
-                                    type="email"
-                                    placeholder='Email'
-                                    name='email'
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                />
-                                {error.email && <span className="text-red-500 text-sm">{error.email}</span>}
-                            </div>
-                        </div>
-
-                        <div className="w-full flex flex-col gap-1 my-4">
-                            <label className="text-gray-900 font-semibold">Password</label>
-                            <input
-                                className="w-full border border-gray-300 p-[10px] rounded-[8px] text-gray-900"
-                                type="password"
-                                placeholder="Password"
-                                name='password'
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                            {error.password && <span className="text-red-500 text-sm">{error.password}</span>}
-                        </div>
-
-                        <div className='my-2'>
-                            <Button
-                                text={loading ? 'Loading...' : 'Login'}
-                                icon={icon}
-                                btnClass={`bg-black text-white ${loading ? 'cursor-wait' : ''}`}
-                                onClick={handleSubmit}
-                                disabled={loading}
-                            />
-                        </div>
-                    </form>
-
-                    <div className="flex items-center my-8">
-                        <hr className='flex-grow border-t border-gray-300' />
-                        <span className="mx-4 text-gray-600">SignIn with</span>
-                        <hr className="flex-grow border-t border-gray-300" />
-                    </div>
-
-                    <div className='flex items-center gap-3 mt-8'>
-                        <div className='border border-gray-500 px-10 w-[220px] h-[50px] items-center justify-center flex gap-2 rounded-md'>
-                            <FaFacebook style={{ fontSize: '25px', color: 'gray' }} />
-                            <p className='text-gray-600'>Facebook</p>
-                        </div>
-
-                        <div className='border border-gray-500 px-10 w-[220px] h-[50px] items-center justify-center flex gap-2 rounded-md'>
-                            <FaGoogle style={{ fontSize: '25px', color: 'gray' }} />
-                            <p className='text-gray-600'>Google</p>
-                        </div>
-
-                        <div className='border border-gray-500 px-10 w-[220px] h-[50px] items-center justify-center flex gap-2 rounded-md'>
-                            <FaGithub style={{ fontSize: '25px', color: 'gray' }} />
-                            <p className='text-gray-600'>Github</p>
-                        </div>
-                    </div>
-                </div>
+          <form
+            //   onSubmit={handleSubmit}
+            className="space-y-6"
+          >
+            <div>
+              <label htmlFor="email" className="sr-only">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                placeholder="Email"
+                required
+              />
             </div>
 
-            <div className='w-[628px] h-[759px]'>
-                <img src={image} alt="signup-image" />
+            <button
+              type="submit"
+              className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center gap-2"
+            >
+              <Mail className="h-5 w-5" />
+              Continue with email
+            </button>
+          </form>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300"></div>
             </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-gray-500">
+                Other log in options
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            <button className="flex items-center justify-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <img
+                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                alt="Google"
+                className="h-5 object-contain"
+              />
+            </button>
+            <button className="flex items-center justify-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png"
+                alt="Facebook"
+                className="h-5 object-contain"
+              />
+            </button>
+            <button className="flex items-center justify-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png"
+                alt="Apple"
+                className="h-5 object-contain"
+              />
+            </button>
+          </div>
+
+          <div className="text-center space-y-4">
+            <p className="text-gray-600">
+              Don't have an account?{" "}
+              <Link
+                to="/signup"
+                className="font-medium text-purple-600 hover:text-purple-500"
+              >
+                Sign up
+              </Link>
+            </p>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Signin;
