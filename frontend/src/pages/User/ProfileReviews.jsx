@@ -1,4 +1,4 @@
-import star5 from '../assets/Categories/ratings.svg'
+import star5 from '../../assets/Categories/ratings.svg'
 
 
 const ProfileReviews = () => {

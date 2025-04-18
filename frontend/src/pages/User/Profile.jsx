@@ -5,7 +5,7 @@ import ProfileMessages from './ProfileMessages';
 import ProfileReviews from './ProfileReviews';
 import ProfilePage from './ProfilePage';
 
-import ProfileLayout from '../components/ProfileLayout/ProfileLayout';
+import ProfileLayout from '../../components/ProfileLayout/ProfileLayout';
 
 const Profile = () => {
   return (

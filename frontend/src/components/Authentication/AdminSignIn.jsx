@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import API from "../../services/api";
 import { ClipLoader } from "react-spinners";
 import { Eye, EyeOff } from "react-feather";
 import signupImage from "../../assets/Signup-page/34554-technology.gif";
 import { toastError, toastSuccess } from "../ToastComponent/showToast";
-import { AdminDashboard } from "../../pages";
+// import { AdminDashboard } from "../../pages";
 
 const AdminSignIn = () => {
   const [formData, setFormData] = useState({

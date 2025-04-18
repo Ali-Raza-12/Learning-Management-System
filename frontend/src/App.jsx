@@ -6,75 +6,62 @@ import {
   Checkout,
   Course,
   Mentor,
-  MessageInbox,
   Order,
   OrderCompletion,
   Profile,
-  ProfilePage,
-  ProfileCourses,
-  ProfileMessages,
-  ProfileReviews,
-  ProfileTeachers,
   Shopping,
   Signup,
   Login,
+} from "./pages/User";
+
+import {
   AdminDashboard,
-  AdminLogin
-} from "./pages";
-import Layout from "./components/Layout/Layout";
-import Toast  from "./components/ToastComponent/showToast";
+  AdminLogin,
+  Courses,
+  Teachers,
+  Students
+} from './pages/Admin';
+
+import Layout from "./layouts/StudentLayout.jsx/Layout";
+import AdminLayout from './layouts/AdminLayout.jsx/DashboardLayout';
+import Toast from "./components/ToastComponent/showToast";
 
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          {/* HOME  */}
+      <Routes>
+
+        {/* ------------------------------------ Public + Student Routes ------------------------------------ */}
+        <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-
-          {/* Category-Page  */}
           <Route path="/category" element={<Category />} />
-
-          {/* Course-Page  */}
           <Route path="/course" element={<Course />} />
-
-          {/* Shopping-Cart  */}
           <Route path="/shopping" element={<Shopping />} />
-
-          {/* Checkoutout  */}
           <Route path="/checkout" element={<Checkout />} />
-
-          {/* Order-Complete  */}
           <Route path="/order-complete" element={<OrderCompletion />} />
-
-          {/* Order  */}
           <Route path="/order" element={<Order />} />
-
-          {/* Mentor  */}
           <Route path="/mentor" element={<Mentor />} />
-
-          {/* Profile (Main Profile Page) */}
           <Route path="/profile/*" element={<Profile />} />
-
-          {/* Profile Page */}
-          {/* <Route path="/profile-page" element={<ProfilePage />} /> */}
-
-          {/* Sign Up  */}
           <Route path="/signup" element={<Signup />} />
-
-          {/* Login  */}
           <Route path="/login" element={<Login />} />
+        </Route>
 
-          {/* Admin Login  */}
-          <Route path="/admin-login" element={<AdminLogin />} />
+        {/* ------------------------------------- Admin Login (Outside Layout) ------------------------------------- */}
+        <Route path="/adminlogin" element={<AdminLogin />} />
 
-          {/* Admin Dashboard  */}
-          <Route path="/admindashboard" element={<AdminDashboard />}></Route>
-        </Routes>
+        {/* ------------------------------------ Admin Routes (Inside Admin Layout) ------------------------------------ */}
+        <Route element={<AdminLayout />}>
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/courses" element={<Students />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Route>
 
-        <Toast />
-      </Layout>
+      </Routes>
+
+      <Toast />
     </BrowserRouter>
   );
 }

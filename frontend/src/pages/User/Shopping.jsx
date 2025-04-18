@@ -1,7 +1,7 @@
-import rightChevron from '../assets/Categories/chevron-right.svg'
-import courseImage from '../assets/Shopping/image 3.svg'
-import ratings from '../assets/Categories/ratings.svg'
-import Button from '../components/Button/Button'
+import rightChevron from '../../assets/Categories/chevron-right.svg'
+import courseImage from '../../assets/Shopping/image 3.svg'
+import ratings from '../../assets/Categories/ratings.svg'
+import Button from '../../components/Button/Button'
 
 
 const Shopping = () => {

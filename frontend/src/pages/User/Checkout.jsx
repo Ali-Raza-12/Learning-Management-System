@@ -1,8 +1,8 @@
-import rightChevron from '../assets/Categories/chevron-right.svg'
-import card from '../assets/Checkout/image 17.svg'
-import courseImage from '../assets/Checkout/Rectangle 1133.svg'
-import Button from '../components/Button/Button'
-import coupon from '../assets/Checkout/percent-03.svg'
+import rightChevron from '../../assets/Categories/chevron-right.svg'
+import card from '../../assets/Checkout/image 17.svg'
+import courseImage from '../../assets/Checkout/Rectangle 1133.svg'
+import Button from '../../components/Button/Button'
+import coupon from '../../assets/Checkout/percent-03.svg'
 
 
 

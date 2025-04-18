@@ -1,4 +1,4 @@
-import Image from '../assets/Profile/Image.svg';
+import Image from '../../assets/Profile/Image.svg';
 
 const ProfilePage = () => {
     return (

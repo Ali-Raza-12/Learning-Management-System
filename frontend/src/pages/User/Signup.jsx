@@ -1,4 +1,4 @@
-import Signupcomp from '../components/Authentication/Signup'
+import Signupcomp from '../../components/Authentication/Signup'
 
 const Signup = () => {
   return (

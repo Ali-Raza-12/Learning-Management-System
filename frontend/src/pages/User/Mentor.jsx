@@ -1,9 +1,9 @@
-import ellipse from '../assets/Ellipse 53.svg'
-import { TopCourses } from "../data/dummy"
-import HomeBanner from "../components/Home/HomeBanner"
-import profile from '../assets/Courses/Ellipse 5.svg'
-import star from '../assets/Courses/iconStar.svg'
-import frame from '../assets/Courses/Frame 427318884.svg'
+import ellipse from '../../assets/Ellipse 53.svg'
+import { TopCourses } from "../../data/dummy"
+import HomeBanner from "../../components/Home/HomeBanner"
+import profile from '../../assets/Courses/Ellipse 5.svg'
+import star from '../../assets/Courses/iconStar.svg'
+import frame from '../../assets/Courses/Frame 427318884.svg'
 
 
 

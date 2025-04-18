@@ -1,4 +1,4 @@
-import tic from '../assets/Group 126.svg'
+import tic from '../../assets/Group 126.svg'
 
 const OrderCompletion = () => {
   return (

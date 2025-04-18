@@ -1,9 +1,9 @@
 import { CiSearch } from "react-icons/ci";
-import relevanceIcon from '../assets/Profile/RelevanceIcon.svg'
-import leftChev from '../assets/Categories/left-chevron.svg'
-import rightChev from '../assets/Categories/chevron-right.svg'
-import { TopInstructor } from "../data/dummy"
-import HomeBanner from "../components/Home/HomeBanner"
+import relevanceIcon from '../../assets/Profile/RelevanceIcon.svg'
+import leftChev from '../../assets/Categories/left-chevron.svg'
+import rightChev from '../../assets/Categories/chevron-right.svg'
+import { TopInstructor } from "../../data/dummy"
+// import HomeBanner from "../components/Home/HomeBanner"
 
 
 const ProfileTeachers = () => {

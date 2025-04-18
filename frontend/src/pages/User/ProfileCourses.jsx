@@ -1,8 +1,8 @@
 import { CiSearch } from "react-icons/ci";
-import relevanceIcon from '../assets/Profile/RelevanceIcon.svg'
-import { TopCourses } from "../data/dummy"
-import leftChev from '../assets/Categories/left-chevron.svg'
-import rightChev from '../assets/Categories/chevron-right.svg'
+import relevanceIcon from '../../assets/Profile/RelevanceIcon.svg'
+import { TopCourses } from "../../data/dummy"
+import leftChev from '../../assets/Categories/left-chevron.svg'
+import rightChev from '../../assets/Categories/chevron-right.svg'
 
 
 

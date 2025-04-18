@@ -1,24 +1,24 @@
-import rightChevron from '../assets/Categories/chevron-right.svg'
-import ratings from '../assets/Categories/ratings.svg'
-import ellipse from '../assets/Courses/Ellipse 5.svg'
-import global from '../assets/Courses/globe-02.svg'
-import profile from '../assets/Courses/Ellipse 5.svg'
-import icon from '../assets/Courses/Icon.svg'
-import icon1 from '../assets/Courses/Icon1.svg'
-import icon2 from '../assets/Courses/Icon2.svg'
-import downChev from '../assets/Categories/down-chevron.svg'
-import teacher from '../assets/Courses/image 4.svg'
+import rightChevron from '../../assets/Categories/chevron-right.svg'
+import ratings from '../../assets/Categories/ratings.svg'
+import ellipse from '../../assets/Courses/Ellipse 5.svg'
+import global from '../../assets/Courses/globe-02.svg'
+import profile from '../../assets/Courses/Ellipse 5.svg'
+import icon from '../../assets/Courses/Icon.svg'
+import icon1 from '../../assets/Courses/Icon1.svg'
+import icon2 from '../../assets/Courses/Icon2.svg'
+import downChev from '../../assets/Categories/down-chevron.svg'
+import teacher from '../../assets/Courses/image 4.svg'
 import { FaFacebook } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import star from '../assets/Courses/iconStar.svg'
-import frame from '../assets/Courses/Frame 427318884.svg'
-import { Testimonials } from "../data/dummy"
-import left from '../assets/left-chevron.svg'
-import right from '../assets/chevron-right.svg'
-import { TopCourses } from "../data/dummy"
-import HomeBanner from "../components/Home/HomeBanner"
+import star from '../../assets/Courses/iconStar.svg'
+import frame from '../../assets/Courses/Frame 427318884.svg'
+import { Testimonials } from "../../data/dummy"
+import left from '../../assets/left-chevron.svg'
+import right from '../../assets/chevron-right.svg'
+import { TopCourses } from "../../data/dummy"
+import HomeBanner from "../../components/Home/HomeBanner"
 
 
 const Course = () => {
