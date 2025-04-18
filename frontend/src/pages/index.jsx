@@ -15,3 +15,5 @@ export { default as ProfileTeachers } from './ProfileTeachers';
 export { default as Shopping } from './Shopping';
 export { default as Signup } from './Signup'; 
 export { default as Login } from './Login';
+export { default as AdminDashboard } from './AdminDashboard'
+export { default as AdminLogin } from './AdminLogin'

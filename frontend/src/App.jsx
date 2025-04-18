@@ -18,29 +18,16 @@ import {
   Shopping,
   Signup,
   Login,
+  AdminDashboard,
+  AdminLogin
 } from "./pages";
 import Layout from "./components/Layout/Layout";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import AdminLogin from "./pages/AdminLogin";
+import Toast  from "./components/ToastComponent/showToast";
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-
         <Routes>
           {/* HOME  */}
           <Route path="/" element={<Home />} />
@@ -80,9 +67,13 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           {/* Admin Login  */}
-          <Route path="/admin-login" element={<AdminLogin />} /> 
+          <Route path="/admin-login" element={<AdminLogin />} />
 
+          {/* Admin Dashboard  */}
+          <Route path="/admindashboard" element={<AdminDashboard />}></Route>
         </Routes>
+
+        <Toast />
       </Layout>
     </BrowserRouter>
   );
