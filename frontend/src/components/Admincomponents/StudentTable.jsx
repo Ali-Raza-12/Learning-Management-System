@@ -77,7 +77,7 @@ const StudentTable = ({ searchTerm }) => {
     },
   ]);
 
-  const [activeRow, setActiveRow] = useState<number | null>(null);
+  const [activeRow, setActiveRow] = useState(null);
 
   const filteredStudents = students.filter(
     (student) =>

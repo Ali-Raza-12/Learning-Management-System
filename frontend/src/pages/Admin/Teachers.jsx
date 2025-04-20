@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PlusCircle, Search, Filter } from 'lucide-react';
-import TeacherCard from '../../components/Admincomponents/TeacherCard';
+import TeacherCard from '../../components/AdminComponents/TeacherCard';
 
 const Teachers = () => {
   const [searchTerm, setSearchTerm] = useState('');

@@ -17,13 +17,14 @@ import {
 import {
   AdminDashboard,
   AdminLogin,
-  Courses,
+  Courses ,
   Teachers,
-  Students
+  Students,
+  Settings
 } from './pages/Admin';
 
-import Layout from "./layouts/StudentLayout.jsx/Layout";
-import AdminLayout from './layouts/AdminLayout.jsx/DashboardLayout';
+import Layout from "./layouts/StudentLayout/Layout";
+import AdminLayout from './layouts/AdminLayout/DashboardLayout';
 import Toast from "./components/ToastComponent/showToast";
 
 function App() {
@@ -55,8 +56,8 @@ function App() {
           <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/students" element={<Students />} />
           <Route path="/teachers" element={<Teachers />} />
-          <Route path="/courses" element={<Students />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/adminsettings" element={<Settings />} />
         </Route>
 
       </Routes>

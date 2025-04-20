@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
+import AdminSidebar from "./AdminSidebar";
 import Header from "./Header";
 
 const DashboardLayout = () => {
@@ -24,14 +24,14 @@ const DashboardLayout = () => {
 
           {/* Sidebar component */}
           <div className="fixed inset-y-0 left-0 flex w-64 flex-col">
-            <Sidebar />
+            <AdminSidebar />
             {/* closeSidebar={toggleSidebar} */}
           </div>
         </div>
 
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-64 lg:flex-col">
-          <Sidebar />
+          <AdminSidebar />
         </div>
 
         {/* Main content */}

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { PlusCircle, Search, Filter } from 'lucide-react';
-import CourseCard from '../../components/Admincomponents/CourseCard';
+import CourseCard from '../../components/AdminComponents/CourseCard';
 
 const Courses = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = useState('grid');
 
   const courses = [
     {

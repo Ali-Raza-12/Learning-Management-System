@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { PlusCircle, Download, Filter, Search } from 'lucide-react';
-import StudentTable from '../../components/Admincomponents/StudentTable';
+import StudentTable from '../../components/AdminComponents/StudentTable';
 
 const Students = () => {
   const [searchTerm, setSearchTerm] = useState('');

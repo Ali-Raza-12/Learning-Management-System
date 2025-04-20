@@ -1,8 +1,8 @@
 import React from 'react';
 import { Users, GraduationCap, BookOpen, Award } from 'lucide-react';
 import { ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import StatsCard from '../Admincomponents/StatsCard';
-import RecentActivityCard from '../Admincomponents/RecentActivityCard';
+import StatsCard from '../AdminComponents/StatsCard';
+import RecentActivityCard from '../AdminComponents/RecentActivityCard';
 
 const Dashboard = () => {
   const stats = [
