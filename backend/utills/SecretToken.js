@@ -22,5 +22,10 @@ module.exports.verifyAccessToken = (token) => {
 
 // Verify Refresh Token
 module.exports.verifyRefreshToken = (token) => {
-  return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+  return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
+    if(err) {
+      return null
+    } 
+    return decoded;
+  });
 };
