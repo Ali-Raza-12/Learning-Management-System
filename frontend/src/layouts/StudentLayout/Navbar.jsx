@@ -13,10 +13,8 @@ import {
   User,
   LogIn,
   UserPlus,
-  Settings,
   LogOut,
 } from "lucide-react";
-import avatar from "../../assets/Avatar.jpg";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -24,7 +22,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -156,27 +153,26 @@ const Navbar = () => {
                       </p>
                     </div>
 
-                    <Link
-                      to="/profile"
-                      className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
-                    >
-                      <User className="w-4 h-4 mr-2" />
-                      Profile
-                    </Link>
-                    {/* <Link
-                      to="/courses"
-                      className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
-                    >
-                      <BookOpen className="w-4 h-4 mr-2" />
-                      My Courses
-                    </Link> */}
-                    {/* <Link
-                      to="/settings"
-                      className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
-                    >
-                      <Settings className="w-4 h-4 mr-2" />
-                      Settings
-                    </Link> */}
+                    {user?.role === "admin" ? (
+                      <>
+                        <Link
+                          to="/admindashboard"
+                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                        >
+                          Dashboard
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <Link
+                          to="/profile"
+                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                        >
+                          <User className="w-4 h-4 mr-2" />
+                          Profile
+                        </Link>
+                      </>
+                    )}
 
                     <div className="border-t border-gray-100 my-1"></div>
 
