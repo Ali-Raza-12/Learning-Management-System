@@ -5,11 +5,11 @@ import ProfileMessages from './ProfileMessages';
 import ProfileReviews from './ProfileReviews';
 import ProfilePage from './ProfilePage';
 
-import ProfileLayout from '../../components/ProfileLayout/ProfileLayout';
+import ProfileLayout from '../../layouts/ProfileLayout/ProfileLayout';
 
 const Profile = () => {
   return (
-    <div className='w-full h-auto'>
+    <div className='w-full h-auto mt-14 py-4'>
       <ProfileLayout>
         <Routes>
           <Route path="/" element={<ProfilePage />} />
