@@ -1,5 +1,8 @@
 # .gitignore for MERN Stack (Frontend + Backend)
 
+seedAdmin.js
+
+
 ### Node.js (Backend) ###
 # Dependency directories
 node_modules/

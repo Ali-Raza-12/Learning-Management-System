@@ -6,79 +6,60 @@ import {
   Checkout,
   Course,
   Mentor,
-  MessageInbox,
   Order,
   OrderCompletion,
   Profile,
-  ProfilePage,
-  ProfileCourses,
-  ProfileMessages,
-  ProfileReviews,
-  ProfileTeachers,
   Shopping,
   Signup,
   Login,
-} from "./pages";
-import Layout from "./components/Layout/Layout";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+} from "./pages/User";
+
+import {
+  AdminDashboard,
+  Courses ,
+  Teachers,
+  Students,
+  Settings
+} from './pages/Admin';
+
+import Layout from "./layouts/StudentLayout/Layout";
+import AdminLayout from './layouts/AdminLayout/DashboardLayout';
+import Toast from "./components/ToastComponent/showToast";
 
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+      <Routes>
 
-        <Routes>
-          {/* HOME  */}
+        {/* ------------------------------------ Public + Student Routes ------------------------------------ */}
+        <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-
-          {/* Category-Page  */}
           <Route path="/category" element={<Category />} />
-
-          {/* Course-Page  */}
           <Route path="/course" element={<Course />} />
-
-          {/* Shopping-Cart  */}
           <Route path="/shopping" element={<Shopping />} />
-
-          {/* Checkoutout  */}
           <Route path="/checkout" element={<Checkout />} />
-
-          {/* Order-Complete  */}
           <Route path="/order-complete" element={<OrderCompletion />} />
-
-          {/* Order  */}
           <Route path="/order" element={<Order />} />
-
-          {/* Mentor  */}
           <Route path="/mentor" element={<Mentor />} />
-
-          {/* Profile (Main Profile Page) */}
           <Route path="/profile/*" element={<Profile />} />
-
-          {/* Profile Page */}
-          {/* <Route path="/profile-page" element={<ProfilePage />} /> */}
-
-          {/* Sign Up  */}
           <Route path="/signup" element={<Signup />} />
-
-          {/* Login  */}
           <Route path="/login" element={<Login />} />
-        </Routes>
-      </Layout>
+        </Route>
+
+
+        {/* ------------------------------------ Admin Routes (Inside Admin Layout) ------------------------------------ */}
+        <Route element={<AdminLayout />}>
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/adminsettings" element={<Settings />} />
+        </Route>
+
+      </Routes>
+
+      <Toast />
     </BrowserRouter>
   );
 }
