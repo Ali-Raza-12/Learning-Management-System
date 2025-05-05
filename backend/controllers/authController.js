@@ -16,15 +16,6 @@ module.exports.registerUser = async (req, res, next) => {
         const user = new User({name, email, password})
         await user.save();
 
-        const accessToken = createSecretToken(user)
-        const refreshToken = generateRefreshToken(user)
-
-        res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            maxAge: 1 * 24 * 60 * 60 * 1000
-        });
-
         return res.status(201).json({ message: 'User registered successfully', data: {
             name: user.name,
             email: user.email
@@ -35,7 +26,6 @@ module.exports.registerUser = async (req, res, next) => {
         next(error)
     }
 };
-
 
 // Login 
 module.exports.loginUser = async (req, res, next) => {
@@ -64,33 +54,19 @@ module.exports.loginUser = async (req, res, next) => {
             maxAge: 1 * 24 * 60 * 60 * 1000 
           });
 
-        return res.json({ accessToken });
+        return res.status(200).json({
+            message: "Login Successfully",
+            accessToken,
+            user: {
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            }
+        });
 
     } catch (error) {
         next(error)
     }
-}
-
-// Admin login 
-module.exports.adminLogin = async (req, res, next) => {
-
-    try {
-        // console.log("🔥 Admin login controller hit");
-        // console.log("📥 Request body:", req.body);
-
-        const { email, password } = req.body;
-        if (
-            email === process.env.ADMIN_EMAIL &&
-            password === process.env.ADMIN_PASSWORD
-        ) {
-            const accessToken = createSecretToken({ id: 'admin', role: 'admin'});
-            return res.json({ accessToken });
-        } else {
-            return res.status(401).json({ message: "Invalid credentials"})
-        }
-    } catch (error) {
-        next(error)
-    }  
 }
 
 // Refresh Token

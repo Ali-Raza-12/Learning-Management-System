@@ -16,7 +16,6 @@ import {
 
 import {
   AdminDashboard,
-  AdminLogin,
   Courses ,
   Teachers,
   Students,
@@ -48,8 +47,6 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Route>
 
-        {/* ------------------------------------- Admin Login (Outside Layout) ------------------------------------- */}
-        <Route path="/adminlogin" element={<AdminLogin />} />
 
         {/* ------------------------------------ Admin Routes (Inside Admin Layout) ------------------------------------ */}
         <Route element={<AdminLayout />}>
