@@ -12,10 +12,9 @@ import {
   School,
   LogOut,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../features/authentication/authSlice";
-import { useNavigate } from "react-router-dom";
 
 const AdminSidebar = ({ children }) => {
   const dispatch = useDispatch();
@@ -23,9 +22,15 @@ const AdminSidebar = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
+  const linkStyle = ({ isActive }) =>
+    `flex items-center px-6 py-4 text-gray-700 hover:bg-blue-50 transition-colors ${
+      isActive
+        ? "bg-blue-100 border-l-4 border-blue-500 font-medium"
+        : ""
+    }`;
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-20 bg-gray-800/50 lg:hidden"
@@ -44,9 +49,9 @@ const AdminSidebar = ({ children }) => {
           <div className="flex h-16 items-center justify-between p-4 border-b border-gray-200">
             <div className="flex items-center">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <Link to="/" className="ml-2 text-xl font-bold text-gray-800">
+              <NavLink to="/" className="ml-2 text-xl font-bold text-gray-800">
                 LMS Portal
-              </Link>
+              </NavLink>
             </div>
             <button
               className="rounded-md p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-600 lg:hidden"
@@ -58,53 +63,42 @@ const AdminSidebar = ({ children }) => {
 
           {/* Navigation */}
           <nav className="flex flex-col justify-between h-full">
-            <div className="flex-1 space-y-1  px-2 py-4">
-              <a
-                href="/admindashboard"
-                className="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              >
-                <Home className="mr-3 h-5 w-5 text-gray-500 group-hover:text-gray-600" />
+            <div className="flex-1 space-y-1 px-2 py-4">
+              <NavLink to="/admindashboard" className={linkStyle}>
+                <Home className="mr-3 h-5 w-5 text-gray-500" />
                 Dashboard
-              </a>
-              <a
-                href="/teachers"
-                className="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              >
-                <School className="mr-3 h-5 w-5 text-gray-500 group-hover:text-gray-600" />
+              </NavLink>
+
+              <NavLink to="/teachers" className={linkStyle}>
+                <School className="mr-3 h-5 w-5 text-gray-500" />
                 Teachers
-              </a>
-              <a
-                href="/courses"
-                className="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              >
-                <BookOpen className="mr-3 h-5 w-5 text-gray-500 group-hover:text-gray-600" />
+              </NavLink>
+
+              <NavLink to="/courses" className={linkStyle}>
+                <BookOpen className="mr-3 h-5 w-5 text-gray-500" />
                 Courses
-              </a>
-              <a
-                href="/students"
-                className="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              >
-                <Users className="mr-3 h-5 w-5 text-gray-500 group-hover:text-gray-600" />
+              </NavLink>
+
+              <NavLink to="/students" className={linkStyle}>
+                <Users className="mr-3 h-5 w-5 text-gray-500" />
                 Students
-              </a>
+              </NavLink>
             </div>
-            <div className="space-y-1  px-2 py-4">
-              <a
-                href="/students"
-                className="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              >
+
+            <div className="space-y-1 px-2 py-4">
+              <NavLink to="/settings" className={linkStyle}>
                 <Settings className="mr-3 h-5 w-5 text-gray-500" />
                 Settings
-              </a>
+              </NavLink>
 
               <button
                 onClick={() => {
                   dispatch(logout());
                   navigate("/login");
                 }}
-                className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                className="flex items-center w-full px-6 py-4 text-red-600 hover:bg-red-50 transition-colors"
               >
-                <LogOut className="w-4 h-4 mr-2" />
+                <LogOut className="w-4 h-4 mr-3" />
                 Sign out
               </button>
             </div>
