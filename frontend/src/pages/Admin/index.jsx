@@ -1,0 +1,5 @@
+export { default as AdminDashboard } from'./AdminDashboard'
+export { default as Courses } from './Courses'
+export { default as Students } from './Students'
+export { default as Teachers } from './Teachers'
+export { default as Settings } from './Settings'

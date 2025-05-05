@@ -137,7 +137,7 @@ export const allCourses = {
         reviews: 35214,
         price: 24.99,
         originalPrice: 149.99,
-        image: "https://source.unsplash.com/random/300x200?machine,learning,ai",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Learn to create Machine Learning Algorithms in Python and R from scratch. Code templates included for your own applications.",
         bestseller: true,
@@ -152,7 +152,7 @@ export const allCourses = {
         reviews: 25610,
         price: 17.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?data,science,analytics",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Complete Data Science Training: Mathematics, Statistics, Python, Advanced Statistics, Machine & Deep Learning",
         bestseller: false,
@@ -167,7 +167,7 @@ export const allCourses = {
         reviews: 18245,
         price: 14.99,
         originalPrice: 99.99,
-        image: "https://source.unsplash.com/random/300x200?sql,database,query",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master SQL Database Development from Beginner to Advanced. Real-world projects, challenges, and latest SQL features.",
         bestseller: false,
@@ -182,7 +182,7 @@ export const allCourses = {
         reviews: 12587,
         price: 16.99,
         originalPrice: 109.99,
-        image: "https://source.unsplash.com/random/300x200?tableau,dashboard,visualization",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master Data Visualization with Tableau Desktop and create interactive dashboards, charts, maps, and stories from real data.",
         bestseller: false,
@@ -197,7 +197,7 @@ export const allCourses = {
         reviews: 15478,
         price: 12.99,
         originalPrice: 89.99,
-        image: "https://source.unsplash.com/random/300x200?statistics,graph,chart",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Learn statistics for data science, business analytics, and data analysis with practical examples and real-world applications.",
         bestseller: false,
@@ -212,7 +212,7 @@ export const allCourses = {
         reviews: 8965,
         price: 19.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?spark,bigdata,cluster",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Learn Apache Spark and Scala to process Big Data with resilient distributed datasets, spark streaming, and machine learning.",
         bestseller: false,
@@ -227,7 +227,7 @@ export const allCourses = {
         reviews: 14253,
         price: 16.99,
         originalPrice: 109.99,
-        image: "https://source.unsplash.com/random/300x200?powerbi,business,intelligence",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master Microsoft Power BI Desktop from basics to advanced: building real-world reports, dashboards, and data visualizations.",
         bestseller: true,
@@ -244,7 +244,7 @@ export const allCourses = {
         reviews: 58742,
         price: 19.99,
         originalPrice: 129.99,
-        image: "https://source.unsplash.com/random/300x200?javascript,code,web",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master JavaScript with projects, challenges, and theory. Modern ES6+ JavaScript from zero to expert level.",
         bestseller: true,
@@ -259,7 +259,7 @@ export const allCourses = {
         reviews: 42365,
         price: 21.99,
         originalPrice: 139.99,
-        image: "https://source.unsplash.com/random/300x200?react,framework,ui",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master React.js and Redux in this comprehensive guide. Build powerful, responsive web apps with React Hooks, Routing, and more.",
         bestseller: true,
@@ -274,7 +274,7 @@ export const allCourses = {
         reviews: 32145,
         price: 18.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?nodejs,server,backend",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Learn Node.js by building real-world applications with MongoDB, Express, and more!",
         bestseller: false,
@@ -289,7 +289,7 @@ export const allCourses = {
         reviews: 28451,
         price: 16.99,
         originalPrice: 109.99,
-        image: "https://source.unsplash.com/random/300x200?html,css,webdesign",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Build responsive websites with HTML5, CSS3, Flexbox, CSS Grid, and Sass. Real-world projects included.",
         bestseller: true,
@@ -304,7 +304,7 @@ export const allCourses = {
         reviews: 21567,
         price: 17.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?typescript,code,programming",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master TypeScript from scratch with this comprehensive guide. Learn all features and how to use them with React, Node, and Express.",
         bestseller: false,
@@ -319,7 +319,7 @@ export const allCourses = {
         reviews: 19876,
         price: 19.99,
         originalPrice: 129.99,
-        image: "https://source.unsplash.com/random/300x200?angular,framework,web",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master Angular 16 (formerly Angular 2) and build awesome, reactive web apps with the successor of Angular.js",
         bestseller: false,
@@ -334,7 +334,7 @@ export const allCourses = {
         reviews: 16245,
         price: 18.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?vuejs,framework,frontend",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master Vue 3 from scratch with Composition API, Vuex, Router, and more. Build professional Vue applications.",
         bestseller: false,
@@ -351,7 +351,7 @@ export const allCourses = {
         reviews: 25478,
         price: 17.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?leadership,management,team",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master leadership skills essential for management and team leadership. Communication, delegation, motivation, and more.",
         bestseller: true,
@@ -366,7 +366,7 @@ export const allCourses = {
         reviews: 19874,
         price: 15.99,
         originalPrice: 99.99,
-        image: "https://source.unsplash.com/random/300x200?agile,scrum,project",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Learn Agile and Scrum principles, methodologies, and practices. Implement Agile project management for your teams.",
         bestseller: false,
@@ -383,7 +383,7 @@ export const allCourses = {
         reviews: 22145,
         price: 18.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?ux,design,interface",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master UX design principles for web, mobile, and applications. Create wireframes, prototypes, and user-centered designs.",
         bestseller: true,
@@ -400,7 +400,7 @@ export const allCourses = {
         reviews: 28742,
         price: 21.99,
         originalPrice: 129.99,
-        image: "https://source.unsplash.com/random/300x200?marketing,socialmedia,seo",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Learn digital marketing strategy, social media, SEO, YouTube, email, Facebook marketing, analytics & more!",
         bestseller: true,
@@ -417,7 +417,7 @@ export const allCourses = {
         reviews: 31254,
         price: 19.99,
         originalPrice: 129.99,
-        image: "https://source.unsplash.com/random/300x200?photography,camera,lens",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Master photography techniques from beginner to advanced. Learn composition, exposure, equipment, editing, and more.",
         bestseller: true,
@@ -434,7 +434,7 @@ export const allCourses = {
         reviews: 19548,
         price: 18.99,
         originalPrice: 119.99,
-        image: "https://source.unsplash.com/random/300x200?piano,keys,music",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description:
           "Learn to play piano from scratch. Master music theory, reading music, and playing techniques for any genre.",
         bestseller: false,
