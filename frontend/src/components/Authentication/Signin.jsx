@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; // ✅ Correct named import
+import { jwtDecode } from "jwt-decode"; 
 import signupImage from "../../assets/Signup-page/34554-technology.gif";
 import { toastSuccess, toastError } from "../ToastComponent/showToast";
 import { EyeOff, Eye } from "react-feather";
 import { ClipLoader } from "react-spinners";
 import API from "../../services/api";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login, logout } from "../../features/authentication/authSlice";
-
 
 const Signin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-
 
   const [formData, setFormData] = useState({
     email: "",
@@ -28,61 +25,63 @@ const Signin = () => {
 
   const validateForm = () => {
     if (!formData.email.includes("@") || !formData.email.includes(".")) {
-      setError("Please enter valid email")
+      setError("Please enter valid email");
       return false;
     }
     return true;
   };
 
   const handleChange = (e) => {
-    setFormData((prev) => ({...prev, [ e.target.name]: e.target.value}));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!validateForm()) return;
-  
+
     setLoading(true);
     setError("");
-  
+
     try {
-      const response = await API.post("api/auth/login", formData);
-      const accessToken = response.data.accessToken;
-  
-      try {
-        // const decoded = jwtDecode(accessToken);
-        
-        dispatch(login({
-          token: accessToken,
-          user: {
-            name: response.data.user.name,
-            email: response.data.user.email,
-            role: response.data.user.role,
-          }
-        }));
-
-        console.log(response.data.user.role);
-
-  
-        setError(""); 
-        setLoading(false); 
-        
-        toastSuccess("Login Successful");
-        navigate(response.data.user.role === "admin" ? "/admindashboard" : "/home");
-
-        
-      } catch (decodeError) {
-        setLoading(false);
-        // toastError("Invalid token received");
-        dispatch(logout());
-      }
+      const response = await API.post("api/auth/login", formData, {
+        timeout: 5000,
+      });
+      const accessToken = response.data.accessToken
       
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || "Network error occurred";
-      setError(errorMessage);
-      toastError(errorMessage);
-      setLoading(false);
+      dispatch(
+          login({
+            token: accessToken,
+            user: {
+              name: response.data.user.name,
+              email: response.data.user.email,
+              role: response.data.user.role,
+            },
+          })
+        );
+
+        setLoading(false);
+        toastSuccess("Login Successful");
+
+        // Navigate to the appropriate dashboard based on user role
+        navigate(
+          response.data.user.role === "admin" ? "/admindashboard" : "/home"
+        );
+      }
+     catch (error) {
+      let errorMessage = "Network error occurred";
+
+      // Handling timeout error
+      if (error.code === "ECONNABORTED") {
+        errorMessage =
+          "Request timed out. Please check your connection or try again later.";
+      } else if (error.response?.data?.message) {
+        // Handling API-specific error message
+        errorMessage = error.response.data.message;
+      }
+
+      setError(errorMessage); // Set error state to display the error message
+      toastError(errorMessage); // Show error toast message
+      setLoading(false); // Set loading to false after handling error
     }
   };
 

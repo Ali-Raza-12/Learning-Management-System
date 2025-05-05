@@ -20,7 +20,6 @@ module.exports.registerUser = async (req, res, next) => {
             name: user.name,
             email: user.email
         },
-        accessToken
     })
     } catch (error) {
         next(error)

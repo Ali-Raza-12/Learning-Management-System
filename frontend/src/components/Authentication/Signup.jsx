@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import API from "../../services/api";
@@ -44,26 +44,28 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log(formData)
     e.preventDefault();
-
     if (!validateForm()) return;
-
+  
     setLoading(true);
     setError("");
-
+  
     try {
-      const response = await API.post("api/auth/register", formData)
-
-      toastSuccess("Register Successfully");
-      navigate("/login");
+      const response = await API.post("api/auth/register", formData);
+      
+      if (response.status >= 200 && response.status < 300) {
+        toastSuccess("Registration successful!");
+        navigate("/login");
+      } else {
+        throw new Error("Registration failed");
+      }
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message || "Network error occurred";
-
+      const errorMessage = error.response?.data?.message 
+        || error.message 
+        || "Network error occurred";
+      
       setError(errorMessage);
       toastError(errorMessage);
-      setLoading(false);
     } finally {
       setLoading(false);
     }
