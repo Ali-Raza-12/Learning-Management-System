@@ -4,7 +4,7 @@ import { Menu, Search, Bell, User } from 'lucide-react';
 
 const Header = ({ toggleSidebar }) => {
   return (
-    <header className="bg-white shadow-sm z-10">
+    <header className="bg-white z-10 h-16 border-b border-gray-200">
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center gap-4">
           <button
