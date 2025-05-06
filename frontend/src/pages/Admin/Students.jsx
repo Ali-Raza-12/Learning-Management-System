@@ -1,16 +1,71 @@
-import { useState } from 'react';
-import { PlusCircle, Download, Filter, Search } from 'lucide-react';
-import StudentTable from '../../components/AdminComponents/StudentTable';
+import { useState, useEffect } from "react";
+import { PlusCircle, Download, Filter, Search } from "lucide-react";
+import StudentTable from "../../components/AdminComponents/StudentTable";
+import CreateStudent from "../../components/Admincomponents/CreateStudent";
+import {
+  toastError,
+  toastSuccess,
+} from "../../components/ToastComponent/showToast";
+import API from "../../services/api";
 
 const Students = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModelOpen] = useState(false);
+  const [students, setStudents] = useState([]);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editStd, setEditStd] = useState(null);
+
+  const handleEditClick = (student) => {
+    setEditStd(student);
+    setIsEditMode(true);
+    setIsModelOpen(true);
+  };
+
+  const fetchStudents = async () => {
+    try {
+      const res = await API.get("/api/students");
+      setStudents(res.data.data);
+    } catch (error) {
+      console.log("Error in fetching Students", error.message);
+    }
+  };
+
+  const handleAddStudent = async (studentData) => {
+    try {
+      if (isEditMode && editStd?._id) {
+        const res = await API.put(`/api/students/${editStd._id}`, studentData);
+        if (res.status === 200) {
+          toastSuccess("Student updated successfully");
+        }
+      } else {
+        const res = await API.post("/api/students", studentData);
+        if (res.status === 201) {
+          toastSuccess("Student created successfully");
+        }
+      }
+      fetchStudents();
+      setIsModelOpen(false);
+      setIsEditMode(false);
+      setEditStd(null);
+    } catch (error) {
+      const msg = error.response?.data?.message || "Failed to save student";
+      toastError(msg);
+    }
+  };
+
+  useEffect(() => {
+    fetchStudents();
+  }, []);
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-2xl font-bold text-gray-900">Students</h1>
         <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
-          <button className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button
+            className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={() => setIsModelOpen(true)}
+          >
             <PlusCircle className="h-4 w-4 mr-2" />
             Add New Student
           </button>
@@ -51,7 +106,24 @@ const Students = () => {
             </div>
           </div>
         </div>
-        <StudentTable searchTerm={searchTerm} />
+        <StudentTable
+          students={students}
+          searchTerm={searchTerm}
+          fetchStudents={fetchStudents}
+          onEdit={handleEditClick}
+        />
+
+        <CreateStudent
+          isOpen={isModalOpen}
+          onClose={() => { 
+            setIsModelOpen(false)
+            setIsEditMode(false)
+            setEditStd(null)
+          }}
+          onAdd={handleAddStudent}
+          editMode={isEditMode}
+          studentData={editStd}
+        />
       </div>
     </div>
   );

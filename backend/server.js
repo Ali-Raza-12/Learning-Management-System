@@ -4,7 +4,7 @@ require("dotenv").config();
 const cookieParser = require('cookie-parser');
 const connectDB = require("./configs/db");
 const authRoutes = require("./routes/authRoutes");
-const userRoutes = require("./routes/userRoutes");
+const studentsRoutes = require("./routes/studentsRoutes");
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   res.send("MERN Backend Server is running");
 });
 app.use("/api/auth", authRoutes); // Auth Routes
-app.use("/api/users", userRoutes); // User Routes
+app.use("/api/students", studentsRoutes); // Std Routes
 
 
 // Start Server

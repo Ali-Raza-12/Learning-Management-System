@@ -2,14 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; 
 import signupImage from "../../assets/Signup-page/34554-technology.gif";
 import { toastSuccess, toastError } from "../ToastComponent/showToast";
 import { EyeOff, Eye } from "react-feather";
 import { ClipLoader } from "react-spinners";
 import API from "../../services/api";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../features/authentication/authSlice";
+import { login } from "../../features/authentication/authSlice";
 
 const Signin = () => {
   const navigate = useNavigate();
