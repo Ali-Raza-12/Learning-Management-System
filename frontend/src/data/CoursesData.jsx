@@ -70,19 +70,20 @@ export const skillsByTopic = {
 export const allCourses = {
     "Data Science": [
       {
-        id: "ds-1",
-        title: "Python for Data Science and Machine Learning",
-        authors: ["Jose Portilla", "Andrei Neagoie"],
-        rating: 4.8,
-        reviews: 45872,
-        price: 19.99,
-        originalPrice: 129.99,
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        id: "ds-y1",
+        title: "Python Full Course - Learn Python in 12 Hours",
+        authors: ["freeCodeCamp.org"],
+        rating: 4.9,
+        reviews: 120000,
+        price: 0.0,
+        originalPrice: 0.0,
+        image: "https://img.youtube.com/vi/rfscVS0vtbw/maxresdefault.jpg",
         description:
-          "Learn Python for Data Science, Machine Learning, and Data Visualization projects. Includes NumPy, Pandas, Matplotlib, Seaborn, Scikit-Learn, and more.",
+          "Comprehensive beginner course to learn Python from scratch.",
         bestseller: true,
-        skills: ["Python", "Machine Learning", "Data Visualization"],
-        learners: "1.2M+ learners",
+        skills: ["Python", "Programming Fundamentals"],
+        learners: "5M+ viewers",
+        youtubeUrl: "https://www.youtube.com/watch?v=rfscVS0vtbw",
       },
       {
         id: "ds-2",
