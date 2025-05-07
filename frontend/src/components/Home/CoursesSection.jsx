@@ -122,6 +122,10 @@ const CoursesSection = () => {
     setDisplayCount((prev) => Math.min(prev + 4, filteredCourses.length));
   };
 
+  const loadLessCourses = () => {
+    setDisplayCount(4);
+  };
+
   // Generate random rating (4.0 - 5.0)
   const getRandomRating = () => (Math.random() * 1 + 4).toFixed(1);
 
@@ -132,15 +136,15 @@ const CoursesSection = () => {
   };
 
   return (
-    <section className="py-12 px-4 bg-white overflow-hidden">
-      <div className="container mx-auto">
+    <section className="py-12 bg-white overflow-hidden">
+      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto ">
         {/* Section Header */}
         <div className="mb-5">
           <h2 className="text-3xl font-bold mb-1 text-gray-900">
             All the skills you need in one place
           </h2>
           <p className="text-base text-gray-600">
-            From critical skills to technical topics, Udemy supports your
+            From critical skills to technical topics, Byway supports your
             professional development.
           </p>
         </div>
@@ -230,7 +234,7 @@ const CoursesSection = () => {
 
                 <div
                   ref={coursesContainerRef}
-                  className="grid grid-cols-4 gap-5 overflow-x-auto pb-3 scrollbar-hide"
+                  className="grid grid-cols-3 lg:grid-cols-4 gap-5 overflow-x-auto pb-3 scrollbar-hide"
                 >
                   {displayedCourses.map((course) => (
                     <div
@@ -369,6 +373,17 @@ const CoursesSection = () => {
                   className="text-base px-5 py-2 bg-white border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-50 transition-colors duration-200"
                 >
                   Load more courses
+                </button>
+              </div>
+            )}
+            {/* Show Less Button  */}
+            {displayCount > 4 && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={loadLessCourses}
+                  className="text-base px-5 py-2 bg-white border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-50 transition-colors duration-200"
+                >
+                  Show less
                 </button>
               </div>
             )}

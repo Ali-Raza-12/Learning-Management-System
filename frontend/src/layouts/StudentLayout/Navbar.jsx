@@ -42,8 +42,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md shadow-sm [.scrolled>&]:bg-white/80 transition-all duration-300">
-      <div className="px-6">
+    <nav className="w-full fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md shadow-sm [.scrolled>&]:bg-white/80 transition-all duration-300">
+      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto ">
         <div className="flex justify-between items-center h-14">
           {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center">
@@ -69,7 +69,7 @@ const Navbar = () => {
 
               {/* Categories Dropdown Menu */}
               {isCategoryOpen && (
-                <div className="absolute top-full mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-100 py-1 z-50">
+                <div className="absolute top-full mt-4 w-48 bg-white rounded-md shadow-lg border border-gray-100 py-1 z-50">
                   {categories.map((category) => (
                     <Link
                       key={category}

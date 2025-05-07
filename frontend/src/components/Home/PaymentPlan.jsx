@@ -2,8 +2,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const PaymentPlan = () => {
   return (
-    <section className="py-12 px-4 md:px-6 bg-white">
-      <div className="container mx-auto">
+    <section className="pb-12 bg-white">
+      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Choose Your Learning Plan
@@ -13,7 +13,7 @@ const PaymentPlan = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {/* Personal Plan */}
           <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="mb-5">

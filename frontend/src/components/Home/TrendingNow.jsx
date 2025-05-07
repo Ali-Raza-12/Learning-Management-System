@@ -86,15 +86,15 @@ const TrendingNow = () => {
   };
 
   return (
-    <section className="py-12 px-4 md:px-6 bg-white">
-      <div className="container mx-auto">
+    <section className="py-12 bg-white">
+      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto">
         {/* Trending Section */}
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-200">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Trending Now</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             <div>
               <div className="mb-5">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">

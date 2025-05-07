@@ -3,11 +3,11 @@ import { Award, Users, Sparkles } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="py-12 md:py-16">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center">
+    <section className="pt-24">
+      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto ">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-6 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-6">
+          <div className="space-y-1 xl:space-y-6">
             <div className="inline-flex items-center px-2.5 py-1 mb-1 bg-blue-50 border border-blue-100 rounded-full">
               <span className="text-xs font-medium text-blue-600">
                 The Future of Learning
@@ -18,12 +18,12 @@ const HeroSection = () => {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Unlock Your Potential with Byway Learning
               </h1>
-              <p className="text-base text-gray-600">
+              <p className="text-base text-gray-600 leading-5">
                 Welcome to Byway, where learning becomes a seamless journey.
                 Discover personalized courses, expert mentorship, and a
                 community of lifelong learners.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex gap-3">
                 <button className="text-base group flex items-center justify-center px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
                   Get started
                   <svg
@@ -46,7 +46,8 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 pt-3">
+            <div className="flex xs:flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 pt-3">
+              <div className="flex items-center gap-1 sm:gap-3">
               <div className="flex -space-x-1.5">
                 {[1, 2, 3, 4].map((i) => (
                   <img
@@ -63,7 +64,8 @@ const HeroSection = () => {
               <div className="text-sm text-gray-600">
                 <span className="font-medium text-gray-900">4,000+</span> students enrolled
               </div>
-              <div className="flex items-center ml-3 bg-yellow-50 px-1.5 py-0.5 rounded-full">
+              </div>
+              <div className="w-fit flex items-center sm:ml-3 bg-yellow-50 px-1.5 py-0.5 rounded-full">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg
                     key={star}
