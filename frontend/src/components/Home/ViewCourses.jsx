@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FaStar, FaRegStar, FaChevronDown } from "react-icons/fa";
-import { Testimonials as TestimonialData } from "../../data/dummy";
+import { Testimonials as TestimonialData } from "../../data/dummy.jsx";
 
-const ViewCourses = () => {
+const ViewCourses = ({ course, courseCategory }) => {
   const [activeTab, setActiveTab] = useState("Description");
   const [expandedModules, setExpandedModules] = useState([]);
 
@@ -28,6 +28,11 @@ const ViewCourses = () => {
     }
     return stars;
   };
+
+  if (!course) {
+    return <div>Loading course...</div>; 
+  }
+
   return (
     <>
       <div className="flex-1">
@@ -38,28 +43,26 @@ const ViewCourses = () => {
           <span>Categories</span>
           <span className="mx-2">/</span>
           <span className="text-primary-600">
-            Introduction to User Experience
+            {courseCategory}
           </span>
         </div>
 
         {/* Course Header */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Introduction to User Experience Design
+          {course?.title || 'Course Title Not Available'}
           </h1>
           <p className="text-lg text-gray-600">
-            This course is meticulously crafted to provide you with a
-            foundational understanding of UX principles, methodologies, and
-            tools that drive exceptional user experiences.
+            {course?.description}
           </p>
         </div>
 
         {/* Course Stats */}
         <div className="flex flex-wrap items-center gap-4 mb-8">
           <div className="flex items-center">
-            <span className="text-yellow-500 font-bold mr-1">4.6</span>
+            <span className="text-yellow-500 font-bold mr-1">{course?.rating}</span>
             <div className="flex mr-1">{renderRatingStars(4.6)}</div>
-            <span className="text-gray-500 text-sm">(651,651 ratings)</span>
+            <span className="text-gray-500 text-sm">{course?.learners}</span>
           </div>
           <span className="text-gray-500 text-sm">
             22 Total Hours • 155 Lectures • All levels
@@ -75,7 +78,7 @@ const ViewCourses = () => {
           />
           <div>
             <p className="text-gray-500 text-sm">Created by</p>
-            <p className="font-medium text-primary-600">Ronald Richards</p>
+            <p className="font-medium text-primary-600">{course?.authors}</p>
           </div>
         </div>
 
@@ -135,13 +138,13 @@ const ViewCourses = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-3">
-                  What You'll Learn
+                  What You will Learn
                 </h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600">
                   {[
                     "Fundamentals of UX design principles",
                     "User research methods and analysis",
-                    "Information architecture and wireframing",
+                    "Information architecture and wireframe",
                     "Prototyping and usability testing",
                     "UI design best practices",
                     "Accessibility considerations",
@@ -348,7 +351,7 @@ const ViewCourses = () => {
                         </span>
                       </div>
                       <p className="text-gray-600 mb-4 italic">
-                        "{testimonial.para}"
+                        {testimonial.para}
                       </p>
                       <div className="flex items-center">
                         <img

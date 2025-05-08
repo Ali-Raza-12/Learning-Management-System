@@ -4,7 +4,7 @@ import downChev from '../../assets/Categories/down-chevron.svg'
 import upChevron from '../../assets/Categories/chevron-up.svg'
 import star5 from '../../assets/Categories/ratings.svg'
 import HomeBanner from "../../components/Home/HomeBanner"
-import { TopCourses, TopInstructor } from "../../data/dummy"
+import { TopCourses, TopInstructor } from "../../data/dummy.jsx"
 import leftChev from '../../assets/Categories/left-chevron.svg'
 import rightChev from '../../assets/Categories/chevron-right.svg'
 

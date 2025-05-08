@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { Testimonials as TestimonialData } from "../../data/dummy";
+import { Testimonials as TestimonialData } from "../../data/dummy.jsx";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -128,7 +128,7 @@ const Testimonials = () => {
                   <div className="flex-grow space-y-4">
                     <Quote className="w-8 h-8 text-blue-100" />
                     <p className="text-sm sm:text-base text-gray-600 line-clamp-4 italic">
-                      "{testimonial.para}"
+                      {testimonial.para}
                     </p>
                   </div>
                   <div className="flex items-center gap-4 pt-4 mt-4 border-t border-gray-100">

@@ -65,7 +65,7 @@ const Companies = () => {
 
     const animationId = setInterval(animate, 30);
     return () => clearInterval(animationId);
-  }, []);
+  },);
 
   // Courses carousel scroll handlers
   const scrollCourses = (direction) => {

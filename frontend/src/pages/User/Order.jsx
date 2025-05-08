@@ -5,7 +5,7 @@ import icon2 from '../../assets/Courses/Icon2.svg'
 import downChev from '../../assets/Categories/down-chevron.svg'
 import star from '../../assets/Courses/iconStar.svg'
 import frame from '../../assets/Courses/Frame 427318884.svg'
-import { TopCourses } from "../../data/dummy"
+import { TopCourses } from "../../data/dummy.jsx"
 import HomeBanner from "../../components/Home/HomeBanner"
 import videoImage from '../../assets/Order/Frame 427318906.svg'
 import videoIcon from '../../assets/Order/video-recorder.svg'

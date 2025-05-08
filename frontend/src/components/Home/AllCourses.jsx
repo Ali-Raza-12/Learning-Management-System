@@ -7,6 +7,7 @@ import {
 import { useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { allCourses } from "../../data/CoursesData";
+import { Link } from "react-router-dom";
 
 const AllCourses = () => {
   // Companies marquee state
@@ -45,26 +46,26 @@ const AllCourses = () => {
   };
 
   // Companies marquee animation
-  useEffect(() => {
-    const animate = () => {
-      setScrollX((prev) => {
-        const newScrollX = prev + 0.5;
-        if (
-          containerRef.current?.firstElementChild &&
-          newScrollX >=
-            (containerRef.current.firstElementChild.offsetWidth *
-              companies.length) /
-              2
-        ) {
-          return 0;
-        }
-        return newScrollX;
-      });
-    };
+  // useEffect(() => {
+  //   const animate = () => {
+  //     setScrollX((prev) => {
+  //       const newScrollX = prev + 0.5;
+  //       if (
+  //         containerRef.current?.firstElementChild &&
+  //         newScrollX >=
+  //           (containerRef.current.firstElementChild.offsetWidth *
+  //             companies.length) /
+  //             2
+  //       ) {
+  //         return 0;
+  //       }
+  //       return newScrollX;
+  //     });
+  //   };
 
-    const animationId = setInterval(animate, 30);
-    return () => clearInterval(animationId);
-  }, []);
+  //   const animationId = setInterval(animate, 30);
+  //   return () => clearInterval(animationId);
+  // }, []);
 
   // Courses carousel scroll handlers
   const scrollCourses = (direction) => {
@@ -131,16 +132,6 @@ const AllCourses = () => {
   return (
     <>
       {/* More Courses */}
-      <div className="">
-        <div className="mb-4 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-            Learners are viewing
-          </h2>
-          <p className="text-base text-gray-600">
-            Discover our comprehensive catalog of courses
-          </p>
-        </div>
-
         <div className="relative">
           {showLeftCourseArrow && (
             <button
@@ -161,7 +152,8 @@ const AllCourses = () => {
             onMouseMove={handleMouseMove}
           >
             {allCoursesArray.map((course) => (
-              <div
+              <Link
+               to={`/course/${course.id}`}
                 key={course.id}
                 className="flex-shrink-0 w-[280px] sm:w-80 bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
               >
@@ -241,7 +233,7 @@ const AllCourses = () => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -255,7 +247,6 @@ const AllCourses = () => {
             </button>
           )}
         </div>
-      </div>
     </>
   );
 };

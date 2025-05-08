@@ -6,8 +6,8 @@ import course from '../assets/Rectangle 1080.svg'
 import rating from '../assets/ratings.svg'
 import instructor from '../assets/Rectangle 1136.svg'
 import icon from '../assets/icon.svg'
-import quotationIcon from '../assets/ri_double-quotes-l.svg' 
-import person from '../assets/Ellipse 61.svg'
+// import quotationIcon from '../assets/ri_double-quotes-l.svg' 
+// import person from '../assets/Ellipse 61.svg'
 
 export const counts = [
     {

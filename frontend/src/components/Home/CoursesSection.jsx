@@ -5,6 +5,7 @@ import {
   Star,
 } from "lucide-react";
 import { allCourses, skillsByTopic, topics } from "../../data/CoursesData";
+import AllCourses from "./AllCourses";
 
 const CoursesSection = () => {
   const [activeTab, setActiveTab] = useState("Data Science");
@@ -222,87 +223,7 @@ const CoursesSection = () => {
             {/* Desktop Grid View */}
             <div className="hidden md:block">
               <div className="relative">
-                {showLeftCourseArrow && (
-                  <button
-                    onClick={() => scrollCourses("left")}
-                    className="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-1.5 shadow-md hover:bg-gray-50 z-10"
-                    aria-label="Scroll courses left"
-                  >
-                    <ChevronLeftIcon className="h-4 w-4" />
-                  </button>
-                )}
-
-                <div
-                  ref={coursesContainerRef}
-                  className="grid grid-cols-3 lg:grid-cols-4 gap-5 overflow-x-auto pb-3 scrollbar-hide"
-                >
-                  {displayedCourses.map((course) => (
-                    <div
-                      key={course.id}
-                      className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
-                    >
-                      <div className="relative">
-                        <img
-                          src={course.image}
-                          alt={course.title}
-                          className="w-full h-40 object-cover"
-                        />
-                        <div className="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs px-1.5 py-0.5 rounded">
-                          {course.duration || "10 hours"}
-                        </div>
-                      </div>
-                      <div className="p-3">
-                        <h4 className="text-base font-bold text-gray-900 mb-1 line-clamp-2">
-                          {course.title}
-                        </h4>
-                        <p className="text-sm text-gray-500 mb-2 line-clamp-2">
-                          {course.description}
-                        </p>
-                        <div className="flex items-center mb-1">
-                          <span className="text-yellow-500 font-bold text-sm mr-1">
-                            {getRandomRating()}
-                          </span>
-                          <div className="flex text-yellow-400 mr-1">
-                            {[...Array(5)].map((_, i) => (
-                              <Star
-                                key={i}
-                                size={12}
-                                fill={
-                                  i < Math.floor(parseFloat(getRandomRating()))
-                                    ? "currentColor"
-                                    : "none"
-                                }
-                              />
-                            ))}
-                          </div>
-                          <span className="text-gray-500 text-xs">
-                            ({getRandomReviews()})
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-900 font-bold text-sm">
-                            {course.price || "$49.99"}
-                          </span>
-                          {course.bestseller && (
-                            <span className="bg-yellow-100 text-yellow-800 text-xs px-1.5 py-0.5 rounded">
-                              Bestseller
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {showRightCourseArrow && (
-                  <button
-                    onClick={() => scrollCourses("right")}
-                    className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-1.5 shadow-md hover:bg-gray-50 z-10"
-                    aria-label="Scroll courses right"
-                  >
-                    <ChevronRightIcon className="h-4 w-4" />
-                  </button>
-                )}
+                <AllCourses />
               </div>
             </div>
 
