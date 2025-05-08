@@ -1,10 +1,11 @@
 import React from "react";
 import { Award, Users, Sparkles } from "lucide-react";
 
+
 const HeroSection = () => {
   return (
     <section className="pt-24">
-      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto ">
+      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2  gap-6 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-1 xl:space-y-6">

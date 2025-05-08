@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { 
+import { Link } from "react-router-dom";
+import {
   BookOpen,
   Facebook,
   Twitter,
@@ -9,40 +9,40 @@ import {
   Phone,
   MapPin,
   ChevronRight,
-  GraduationCap
-} from 'lucide-react';
+  GraduationCap,
+} from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'About Us', href: '/about' },
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-    { name: 'FAQ', href: '/faq' },
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
+    { name: "FAQ", href: "/faq" },
   ];
 
   const programs = [
-    { name: 'Web Development', href: '/category/web-development' },
-    { name: 'Data Science', href: '/category/data-science' },
-    { name: 'Business Analytics', href: '/category/business' },
-    { name: 'UX/UI Design', href: '/category/design' },
-    { name: 'Digital Marketing', href: '/category/marketing' },
-    { name: 'Mobile Development', href: '/category/mobile' },
+    { name: "Web Development", href: "/category/web-development" },
+    { name: "Data Science", href: "/category/data-science" },
+    { name: "Business Analytics", href: "/category/business" },
+    { name: "UX/UI Design", href: "/category/design" },
+    { name: "Digital Marketing", href: "/category/marketing" },
+    { name: "Mobile Development", href: "/category/mobile" },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
   ];
 
   return (
     <footer className="bg-gray-900 text-gray-300">
       {/* Main Footer Content */}
-      <div className="px-6 py-12 lg:py-16">
+      <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto  py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Company Info */}
           <div className="space-y-5">
@@ -53,7 +53,8 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-base leading-relaxed">
-              Empowering learners worldwide through accessible, engaging, and high-quality online education.
+              Empowering learners worldwide through accessible, engaging, and
+              high-quality online education.
             </p>
             <div className="flex space-x-3 pt-1">
               {socialLinks.map((social) => (
@@ -73,7 +74,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-5">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white mb-5">
+              Quick Links
+            </h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -91,7 +94,9 @@ const Footer = () => {
 
           {/* Popular Programs */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-5">Popular Programs</h3>
+            <h3 className="text-lg font-semibold text-white mb-5">
+              Popular Programs
+            </h3>
             <ul className="space-y-2.5">
               {programs.map((program) => (
                 <li key={program.name}>
@@ -109,7 +114,9 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-5">Contact Us</h3>
+            <h3 className="text-lg font-semibold text-white mb-5">
+              Contact Us
+            </h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -132,8 +139,10 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-base">
-                  123 Learning Street,<br />
-                  San Francisco, CA 94105<br />
+                  123 Learning Street,
+                  <br />
+                  San Francisco, CA 94105
+                  <br />
                   United States
                 </span>
               </li>
@@ -150,13 +159,22 @@ const Footer = () => {
               © {currentYear} Byway. All rights reserved.
             </p>
             <div className="flex space-x-4">
-              <Link to="/privacy" className="text-sm hover:text-blue-400 transition-colors">
+              <Link
+                to="/privacy"
+                className="text-sm hover:text-blue-400 transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-sm hover:text-blue-400 transition-colors">
+              <Link
+                to="/terms"
+                className="text-sm hover:text-blue-400 transition-colors"
+              >
                 Terms of Service
               </Link>
-              <Link to="/cookies" className="text-sm hover:text-blue-400 transition-colors">
+              <Link
+                to="/cookies"
+                className="text-sm hover:text-blue-400 transition-colors"
+              >
                 Cookie Policy
               </Link>
             </div>

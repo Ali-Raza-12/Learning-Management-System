@@ -20,7 +20,7 @@ const Testimonials = () => {
       } else {
         setVisibleItems(1);
       }
-      setCurrentIndex(0); // Reset to first item on resize
+      setCurrentIndex(0); 
     };
 
     handleResize();
@@ -71,8 +71,8 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 md:py-16 lg:py-20">
+      <div className="container mx-auto px-4 xs:px-6 sm:px-2">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 md:mb-12">
           <div className="text-center md:text-left mb-6 md:mb-0">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
