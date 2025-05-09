@@ -1,178 +1,259 @@
-import Button from '../../components/Button/Button'
-import image1 from '../../assets/Categories/filter.svg'
-import downChev from '../../assets/Categories/down-chevron.svg'
-import upChevron from '../../assets/Categories/chevron-up.svg'
-import star5 from '../../assets/Categories/ratings.svg'
-import HomeBanner from "../../components/Home/HomeBanner"
-import { TopCourses, TopInstructor } from "../../data/dummy.jsx"
-import leftChev from '../../assets/Categories/left-chevron.svg'
-import rightChev from '../../assets/Categories/chevron-right.svg'
+import React, { useState } from "react";
+import { Filter } from "lucide-react";
+import HomeBanner from "../../components/Home/HomeBanner";
+import Button from "../../components/Button/Button";
+import { TopCourses, TopInstructor } from "../../data/dummy1";
 
+// Components
+import CourseCard from "../../components/Category/CoursesCard";
+// import InstructorCard from "../../components/Category/InstructorCard";
+import Pagination from "../../components/Category/Pagination";
+import FilterSidebar from "../../components/Category/FilterSidebar";
+import SortDropdown from "../../components/Category/SortDropdown";
+import NoResults from "../../components/Category/NoResults";
 
+// Mock toast function (replace with your actual toast implementation)
+const toast = {
+  title: () => {},
+  description: () => {},
+};
 
 const Category = () => {
+  const [filters, setFilters] = useState({
+    rating: null,
+    chapters: [],
+    price: [],
+    category: [],
+    level: [],
+  });
+
+  const [sort, setSort] = useState("relevance");
+  const [currentPage, setCurrentPage] = useState(1);
+  const coursesPerPage = 6;
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const filteredCourses = TopCourses.filter((course) => {
+    // Rating filter
+    if (filters.rating !== null && course.rating < filters.rating) return false;
+
+    // Chapters filter
+    if (filters.chapters.length > 0) {
+      const chapterMatches = filters.chapters.some((range) => {
+        if (range === "1-10")
+          return course.chapters >= 1 && course.chapters <= 10;
+        if (range === "10-15")
+          return course.chapters >= 10 && course.chapters <= 15;
+        if (range === "15-20")
+          return course.chapters >= 15 && course.chapters <= 20;
+        if (range === "20-25")
+          return course.chapters >= 20 && course.chapters <= 25;
+        if (range === "above-25") return course.chapters > 25;
+        return false;
+      });
+      if (!chapterMatches) return false;
+    }
+
+    // Price filter
+    if (filters.price.length > 0) {
+      const price = parseFloat(course.price.replace("$", ""));
+      const priceMatch = filters.price.some((range) => {
+        if (range === "free") return price === 0;
+        if (range === "0-50") return price > 0 && price <= 50;
+        if (range === "50-100") return price > 50 && price <= 100;
+        if (range === "100+") return price > 100;
+        return false;
+      });
+      if (!priceMatch) return false;
+    }
+
+    // Category filter
+    if (
+      filters.category.length > 0 &&
+      !filters.category.includes(course.category)
+    ) {
+      return false;
+    }
+
+    // Level filter
+    if (filters.level.length > 0 && !filters.level.includes(course.level)) {
+      return false;
+    }
+
+    return true;
+  });
+
+  const sortedCourses = [...filteredCourses].sort((a, b) => {
+    if (sort === "price-asc") {
+      return (
+        parseFloat(a.price.replace("$", "")) -
+        parseFloat(b.price.replace("$", ""))
+      );
+    }
+    if (sort === "price-desc") {
+      return (
+        parseFloat(b.price.replace("$", "")) -
+        parseFloat(a.price.replace("$", ""))
+      );
+    }
+    if (sort === "rating") {
+      return b.rating - a.rating;
+    }
+    if (sort === "newest") {
+      return new Date(b.date) - new Date(a.date);
+    }
+    return 0;
+  });
+
+  const totalPages = Math.ceil(sortedCourses.length / coursesPerPage);
+  const indexOfLastCourse = currentPage * coursesPerPage;
+  const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
+  const currentCourses = sortedCourses.slice(
+    indexOfFirstCourse,
+    indexOfLastCourse
+  );
+
+  const handleFilterChange = (filterType, value) => {
+    setFilters((prev) => ({ ...prev, [filterType]: value }));
+    setCurrentPage(1);
+    toast({
+      title: "Filters Updated",
+      description: "Course list has been filtered based on your selection.",
+    });
+  };
+
+  const handleSortChange = (value) => {
+    setSort(value);
+    const sortLabel = sortOptions.find(
+      (option) => option.value === value
+    )?.label;
+    toast({
+      title: "Sorting Applied",
+      description: `Courses sorted by ${sortLabel}.`,
+    });
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const clearAllFilters = () => {
+    setFilters({
+      rating: null,
+      chapters: [],
+      price: [],
+      category: [],
+      level: [],
+    });
+    toast({
+      title: "Filters Cleared",
+      description: "All filters have been removed.",
+    });
+  };
+
+  const activeFiltersCount =
+    (filters.rating !== null ? 1 : 0) +
+    filters.chapters.length +
+    filters.price.length +
+    filters.category.length +
+    filters.level.length;
+
   return (
-    <>
-      <div className='max-w-[1440px] h-auto flex gap-[60px] my-[50px]'>
-        <div className='max-w-[1280px] h-auto flex flex-col gap-[24px] mx-[40px]'>
-          <h1 className='text-[24px] text-grey9 font-bold'>Design Courses</h1>
-          <div className='max-w-[1280px] min-h-[1289px] flex flex-col gap-[24px]'>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+          Design Courses
+        </h1>
+        <p className="text-gray-600">
+          Explore the best courses to enhance your skills
+        </p>
+      </div>
 
-            <h3 className='text-grey9 font-bold'>All Development Courses</h3>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+        <h3 className="text-xl font-bold text-gray-900">
+          All Development Courses
+        </h3>
 
-            <div className='flex justify-between'>
-              <Button text={'Filter'} icon={image1} btnClass='text-grey9 flex gap-[6px] px-[24px] border border-grey9 font-semibold place-items-center' />
-              <div className='max-h-[48px] flex gap-[15px] items-center'>
-                <p className='text-grey9 font-medium'>Sort By</p>
-                <Button text={'Relevance'} icon={downChev} btnClass='text-grey9 flex gap-[6px] py-[10px] px-[24px] border border-grey9 font-semibold place-items-center' />
-              </div>
-            </div>
+        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+          <Button
+            text="Filter"
+            icon={<Filter size={18} className="mr-2" />}
+            btnClass="relative border px-4 py-2 hover:bg-gray-100"
+            onClick={() => setIsFilterOpen(!isFilterOpen)} // Optional: You can handle this by wrapping Button or modifying Button to accept onClick
+          />
+          {activeFiltersCount > 0 && (
+            <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              {activeFiltersCount}
+            </span>
+          )}
 
-            <div className='w-full h-full flex gap-[40px] '>
+          <Button
+            text="Filters"
+            icon={<Filter size={18} />}
+            btnClass="border px-4 py-2 hover:bg-gray-100"
+          />
 
-              {/* Side Bar  */}
-              <div className='min-w-[305px]'>
+          <SortDropdown sort={sort} onSortChange={handleSortChange} />
+        </div>
+      </div>
 
-                <div className='w-full flex justify-between p-[16px]'>
-                  <p className='font-medium text-grey9'>Rating</p>
-                  <button className='border border-grey9'><img src={upChevron} alt="upanddown" /></button>
-                </div>
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className={`lg:block ${isFilterOpen ? "block" : "hidden"}`}>
+          <FilterSidebar
+            filters={filters}
+            onFilterChange={handleFilterChange}
+          />
+        </div>
 
-                <div className='flex flex-col gap-[16px] px-[16px] py-[8px]'>
-                  <img src={star5} className='w-[100px] h-[20px]' alt="ratings" />
-                  <img src={star5} className='w-[100px] h-[20px]' alt="ratings" />
-                  <img src={star5} className='w-[100px] h-[20px]' alt="ratings" />
-                  <img src={star5} className='w-[100px] h-[20px]' alt="ratings" />
-                  <img src={star5} className='w-[100px] h-[20px]' alt="ratings" />
-                </div>
+        <div className="flex-1">
+          <div className="mb-6">
+            <p className="text-gray-600">
+              Showing{" "}
+              <span className="font-medium">{sortedCourses.length}</span>{" "}
+              courses
+              {activeFiltersCount > 0 ? " with applied filters" : ""}
+            </p>
+          </div>
 
-                <div className='w-full flex justify-between p-[16px]'>
-                  <p className='font-medium text-grey9'>Number of Chapters</p>
-                  <button className='border border-grey9'><img src={upChevron} alt="upanddown" /></button>
-                </div>
-
-                <div className='flex flex-col gap-[16px] px-[16px] py-[8px]'>
-                  <div className='w-[85px] h-[26px] flex gap-[12px]'>
-                    <input type="checkbox" className='w-[24px] h-[24px]' />
-                    <p className='text-grey9'>1-10</p>
-                  </div>
-                  <div className='w-[85px] h-[26px] flex gap-[12px]'>
-                    <input type="checkbox" className='w-[24px] h-[24px]' />
-                    <p className='text-grey9'>10-15</p>
-                  </div>
-                  <div className='w-[85px] h-[26px] flex gap-[12px]'>
-                    <input type="checkbox" className='w-[24px] h-[24px]' />
-                    <p className='text-grey9'>15-20</p>
-                  </div>
-                  <div className='w-[85px] h-[26px] flex gap-[12px]'>
-                    <input type="checkbox" className='w-[24px] h-[24px]' />
-                    <p className='text-grey9'>20-15</p>
-                  </div>
-                </div>
-
-                <div className='w-full flex justify-between p-[16px]'>
-                  <p className='font-medium text-grey9'>Price</p>
-                  <button className='border border-grey9'><img src={upChevron} alt="upanddown" /></button>
-                </div>
-
-                <div className='w-full flex justify-between p-[16px]'>
-                  <p className='font-medium text-grey9'>Category</p>
-                  <button className='border border-grey9'><img src={upChevron} alt="upanddown" /></button>
-                </div>
-
-              </div>
-
-              {/* Main Content  */}
-              <div className="w-full h-auto flex flex-col">
-                <HomeBanner title="Top Courses" btnText="See All" />
-
-                <div className="grid grid-cols-3 gap-2">
-                  {[...Array(9)].map((_, index) => (
-                    <div key={index} className="mt-6 p-[8px] border border-gray-300 rounded-[16px] flex flex-col gap-[8px]">
-                      <img src={TopCourses[0]?.img} alt="course-img" />
-                      <div className="flex flex-col gap-[8px]">
-                        <p className="text-base text-grey9 font-bold">{TopCourses[0]?.title}</p>
-                        <p className="font-light text-grey7">{TopCourses[0]?.subheading}</p>
-                        <div className="flex gap-[8px]">
-                          <img src={TopCourses[0]?.rate[0]?.img} alt="img" />
-                          <p className="text-sm text-grey7 font-normal">{TopCourses[0]?.rate[0]?.title}</p>
-                        </div>
-                        <p className="text-xs text-grey7">{TopCourses[0]?.para}</p>
-                        <p>{TopCourses[0]?.price}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className='w-full flex justify-center my-[20px] items-center'>
-                  <div className='flex border border-grey9 rounded-lg overflow-hidden shadow-lg'>
-                    <img src={leftChev} className='p-[8px] border-r border-grey9 cursor-pointer hover:bg-grey2 transition' alt="left" />
-                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>1</p>
-                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>2</p>
-                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>3</p>
-                    <p className='py-[8px] px-[12px] text-grey9 font-semibold border-r border-grey9 cursor-pointer hover:bg-grey2 transition'>4</p>
-                    <img src={rightChev} className='p-[8px] cursor-pointer hover:bg-grey2 transition' alt="right" />
-                  </div>
-                </div>
-
-
-
-              </div>
-            </div>
-
-            {/* Popular Mentors */}
-            <div className="flex flex-col gap-[24px my-[30px]">
-              <HomeBanner title="Popular Mentors" btnText="See All" />
-
-              <div className="flex flex-wrap justify-between">
-                {TopInstructor.map((instructor, index) => (
-                  <div key={index} className="mt-6 p-[16px] border border-gray-300 rounded-[16px] flex flex-col gap-[16px] items-center justify-center">
-                    <img src={instructor.img} alt="instructor" />
-                    <h1 className="text-base text-grey9 font-bold">{instructor.name}</h1>
-                    <p className="text-grey7">{instructor.expertise}</p>
-
-                    <div className="w-full border border-gray-200"></div>
-
-                    <div className="flex justify-between w-full">
-                      <div className="flex gap-[4px]">
-                        <img src={instructor.rate[0].star} alt="" />
-                        <p className="text-grey9">{instructor.rate[0].points}</p>
-                      </div>
-                      <p className="text-grey7">{instructor.rate[0].stdNo}</p>
-                    </div>
-                  </div>
+          {sortedCourses.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {currentCourses.map((course) => (
+                  <CourseCard key={course.id} course={course} />
                 ))}
               </div>
+
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            </>
+          ) : (
+            <NoResults onClearFilters={clearAllFilters} />
+          )}
+
+          {/* <div className="mt-16">
+            <HomeBanner title="Popular Mentors" btnText="See All" />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {TopInstructor.map((instructor) => (
+                <InstructorCard key={instructor.id} instructor={instructor} />
+              ))}
             </div>
+          </div> */}
 
-            {/* Top Courses  */}
-            <div className="w-full h-auto flex flex-col">
-              <HomeBanner title="Featured Courses" btnText="See All" />
-
-              <div className="flex flex-wrap justify-between">
-                {TopCourses.map((course, index) => (
-                  <div key={index} className="mt-6 p-[8px] border border-gray-300 rounded-[16px] flex flex-col gap-[8px]">
-                    <img src={course.img} alt="course-img" />
-                    <div className="flex flex-col gap-[8px]">
-                      <p className="text-base text-grey9 font-bold">{course.title}</p>
-                      <p className="font-light text-grey7">{course.subheading}</p>
-                      <div className="flex gap-[8px]">
-                        <img src={course.rate[0].img} alt="img" />
-                        <p className="text-sm text-grey7 font-normal">{course.rate[0].title}</p>
-                      </div>
-                      <p className="text-xs text-grey7">{course.para}</p>
-                      <p>{course.price}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="mt-16">
+            <HomeBanner title="Featured Courses" btnText="See All" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {TopCourses.slice(0, 3).map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
             </div>
-
           </div>
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default Category
+export default Category;
