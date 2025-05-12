@@ -12,7 +12,6 @@ import FilterSidebar from "../../components/Category/FilterSidebar";
 import SortDropdown from "../../components/Category/SortDropdown";
 import NoResults from "../../components/Category/NoResults";
 
-// Mock toast function (replace with your actual toast implementation)
 const toast = {
   title: () => {},
   description: () => {},
@@ -159,7 +158,7 @@ const Category = () => {
     filters.level.length;
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto py-20">
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
           Design Courses
@@ -180,17 +179,6 @@ const Category = () => {
             icon={<Filter size={18} className="mr-2" />}
             btnClass="relative border px-4 py-2 hover:bg-gray-100"
             onClick={() => setIsFilterOpen(!isFilterOpen)} // Optional: You can handle this by wrapping Button or modifying Button to accept onClick
-          />
-          {activeFiltersCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-              {activeFiltersCount}
-            </span>
-          )}
-
-          <Button
-            text="Filters"
-            icon={<Filter size={18} />}
-            btnClass="border px-4 py-2 hover:bg-gray-100"
           />
 
           <SortDropdown sort={sort} onSortChange={handleSortChange} />

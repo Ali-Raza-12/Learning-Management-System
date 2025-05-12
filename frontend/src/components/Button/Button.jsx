@@ -1,14 +1,13 @@
 import React from "react";
 
-const Button = ({ text, icon, btnClass, iconClass }) => {
+const Button = ({ text, icon, btnClass, iconClass, ...rest }) => {
   return (
     <button
       className={`w-fit flex items-center gap-2 rounded-lg transition-all duration-200 ${btnClass}`}
+      {...rest}
     >
-      {text}
-      {icon && <img className={`${iconClass}`} src={icon} /> && (
-        <span>{icon}</span>
-      )}
+      <span>{text}</span>
+      {icon && <span className={iconClass}>{icon}</span>}
     </button>
   );
 };

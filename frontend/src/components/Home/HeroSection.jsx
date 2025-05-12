@@ -1,6 +1,7 @@
 import React from "react";
 import { Award, Users, Sparkles } from "lucide-react";
-
+import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -25,46 +26,55 @@ const HeroSection = () => {
                 community of lifelong learners.
               </p>
               <div className="flex gap-3">
-                <button className="text-base group flex items-center justify-center px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
-                  Get started
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-3.5 h-3.5 ml-1.5 transition-transform duration-200 group-hover:translate-x-1"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                <Link to="payment-target" smooth={true} duration={900}>
+                  <button
+                    to="payment-target"
+                    className="text-base group flex items-center justify-center px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium"
                   >
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </button>
-                <button className="text-base px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium">
+                    Get started
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-3.5 h-3.5 ml-1.5 transition-transform duration-200 group-hover:translate-x-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </Link>
+                <RouterLink
+                  to="/category"
+                  className="text-base px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium"
+                >
                   Explore courses
-                </button>
+                </RouterLink>
               </div>
             </div>
 
             <div className="flex xs:flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 pt-3">
               <div className="flex items-center gap-1 sm:gap-3">
-              <div className="flex -space-x-1.5">
-                {[1, 2, 3, 4].map((i) => (
-                  <img
-                    key={i}
-                    src={`https://randomuser.me/api/portraits/men/${
-                      i + 20
-                    }.jpg`}
-                    alt="User"
-                    className="w-7 h-7 rounded-full border-2 border-white bg-gray-200"
-                    style={{ zIndex: 5 - i }}
-                  />
-                ))}
-              </div>
-              <div className="text-sm text-gray-600">
-                <span className="font-medium text-gray-900">4,000+</span> students enrolled
-              </div>
+                <div className="flex -space-x-1.5">
+                  {[1, 2, 3, 4].map((i) => (
+                    <img
+                      key={i}
+                      src={`https://randomuser.me/api/portraits/men/${
+                        i + 20
+                      }.jpg`}
+                      alt="User"
+                      className="w-7 h-7 rounded-full border-2 border-white bg-gray-200"
+                      style={{ zIndex: 5 - i }}
+                    />
+                  ))}
+                </div>
+                <div className="text-sm text-gray-600">
+                  <span className="font-medium text-gray-900">4,000+</span>{" "}
+                  students enrolled
+                </div>
               </div>
               <div className="w-fit flex items-center sm:ml-3 bg-yellow-50 px-1.5 py-0.5 rounded-full">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -110,7 +120,9 @@ const HeroSection = () => {
                     <p className="text-xs font-medium text-gray-900">
                       Certification
                     </p>
-                    <p className="text-[0.65rem] text-gray-500">Industry recognized</p>
+                    <p className="text-[0.65rem] text-gray-500">
+                      Industry recognized
+                    </p>
                   </div>
                 </div>
               </div>
@@ -124,7 +136,9 @@ const HeroSection = () => {
                     <p className="text-xs font-medium text-gray-900">
                       Community
                     </p>
-                    <p className="text-[0.65rem] text-gray-500">Learn together</p>
+                    <p className="text-[0.65rem] text-gray-500">
+                      Learn together
+                    </p>
                   </div>
                 </div>
               </div>
@@ -138,7 +152,9 @@ const HeroSection = () => {
                     <p className="text-xs font-medium text-gray-900">
                       Personalized
                     </p>
-                    <p className="text-[0.65rem] text-gray-500">Adaptive learning</p>
+                    <p className="text-[0.65rem] text-gray-500">
+                      Adaptive learning
+                    </p>
                   </div>
                 </div>
               </div>

@@ -18,10 +18,13 @@ const SortDropdown = ({ sort, onSortChange }) => {
 
   return (
     <div className="relative">
-      <Button onClick={() => setIsOpen(!isOpen)} variant="outline">
-        {sortButtonText}
-        <ChevronDown size={16} className="ml-2" />
-      </Button>
+      <Button
+        onClick={() => setIsOpen(!isOpen)}
+        text={sortButtonText}
+        icon={<ChevronDown size={16} />}
+        btnClass="border px-4 py-2 hover:bg-gray-100"
+        iconClass="ml-2"
+      />
 
       {isOpen && (
         <div className="absolute top-full right-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10 py-1">
