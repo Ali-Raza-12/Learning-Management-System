@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { categories } from "../../data/dummy1";
 import { logout } from "../../features/authentication/authSlice";
+import { useNavigate } from "react-router-dom";
 import {
   Search,
   ShoppingCart,
@@ -18,6 +20,7 @@ import {
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { isLoggedIn, user } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -32,14 +35,6 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isDropdownOpen]);
-
-  const categories = [
-    "Development",
-    "Business",
-    "Design",
-    "Marketing",
-    "Personal Development",
-  ];
 
   return (
     <nav className="w-full fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md shadow-sm [.scrolled>&]:bg-white/80 transition-all duration-300">
@@ -64,7 +59,11 @@ const Navbar = () => {
                 className="flex items-center space-x-1 text-base text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <span>Categories</span>
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown
+                  className={`h-4 w-4 transform transition-transform ${
+                    isCategoryOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
 
               {/* Categories Dropdown Menu */}
@@ -214,7 +213,15 @@ const Navbar = () => {
             {isMenuOpen ? (
               <X className="h-5 w-5 text-gray-700" />
             ) : (
-              <Menu className="h-5 w-5 text-gray-700" />
+              <div className="flex items-center gap-4">
+                <button className="relative p-1.5 hover:bg-gray-100 rounded-full transition-colors">
+                  <ShoppingCart className="h-5 w-5 text-gray-700" />
+                  <span className="absolute top-0 right-0 h-4 w-4 bg-blue-600 text-white text-xs rounded-full flex items-center justify-center">
+                    0
+                  </span>
+                </button>
+                <Menu className="h-5 w-5 text-gray-700" />
+              </div>
             )}
           </button>
         </div>

@@ -23,7 +23,7 @@ export const TopCourses = [
       students: 2340,
       para: "Learn advanced React patterns to build scalable and maintainable applications",
       price: "$94.99",
-      category: "Development",
+      category: "Web Development",
       level: "Advanced",
       chapters: 22
     },
@@ -37,7 +37,7 @@ export const TopCourses = [
       students: 3125,
       para: "Master front-end and back-end development to build complete web applications",
       price: "$129.99",
-      category: "Development",
+      category: "Web Development",
       level: "Intermediate",
       chapters: 28
     },
@@ -121,14 +121,11 @@ export const TopCourses = [
   ];
   
   export const categories = [
-    "Design",
-    "Development",
-    "Marketing",
-    "Photography",
-    "Music",
+    "Web Development",
+    "Mobile Development",
     "Data Science",
+    "Design",
     "Business",
-    "Personal Development"
   ];
   
   export const priceRanges = [

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FilterSection from "./FilterSection";
 import Rating from "./Rating";
+import { categories } from "../../data/dummy1";
 
 const FilterSidebar = ({ filters, onFilterChange }) => {
   const [openSections, setOpenSections] = useState({
@@ -32,13 +33,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
     { label: "$100+", value: "100+" },
   ];
 
-  const categories = [
-    "Web Development",
-    "Mobile Development",
-    "Data Science",
-    "Design",
-    "Business",
-  ];
+
   const levels = ["Beginner", "Intermediate", "Advanced"];
 
   const handleRatingChange = (rating) => {

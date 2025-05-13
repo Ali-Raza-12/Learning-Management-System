@@ -12,10 +12,10 @@ import FilterSidebar from "../../components/Category/FilterSidebar";
 import SortDropdown from "../../components/Category/SortDropdown";
 import NoResults from "../../components/Category/NoResults";
 
-const toast = {
-  title: () => {},
-  description: () => {},
-};
+// const toast = {
+//   title: () => {},
+//   description: () => {},
+// };
 
 const Category = () => {
   const [filters, setFilters] = useState({
@@ -114,10 +114,10 @@ const Category = () => {
   const handleFilterChange = (filterType, value) => {
     setFilters((prev) => ({ ...prev, [filterType]: value }));
     setCurrentPage(1);
-    toast({
-      title: "Filters Updated",
-      description: "Course list has been filtered based on your selection.",
-    });
+    // toast({
+    //   title: "Filters Updated",
+    //   description: "Course list has been filtered based on your selection.",
+    // });
   };
 
   const handleSortChange = (value) => {
@@ -125,10 +125,10 @@ const Category = () => {
     const sortLabel = sortOptions.find(
       (option) => option.value === value
     )?.label;
-    toast({
-      title: "Sorting Applied",
-      description: `Courses sorted by ${sortLabel}.`,
-    });
+    // toast({
+    //   title: "Sorting Applied",
+    //   description: `Courses sorted by ${sortLabel}.`,
+    // });
   };
 
   const handlePageChange = (page) => {
@@ -144,10 +144,10 @@ const Category = () => {
       category: [],
       level: [],
     });
-    toast({
-      title: "Filters Cleared",
-      description: "All filters have been removed.",
-    });
+    // toast({
+    //   title: "Filters Cleared",
+    //   description: "All filters have been removed.",
+    // });
   };
 
   const activeFiltersCount =
