@@ -1,4 +1,3 @@
-import React from "react";
 import { Award, Users, Sparkles } from "lucide-react";
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
