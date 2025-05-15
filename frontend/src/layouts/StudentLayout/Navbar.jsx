@@ -20,7 +20,7 @@ import {
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { isLoggedIn, user } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -206,24 +206,27 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 transition-colors"
-          >
-            {isMenuOpen ? (
-              <X className="h-5 w-5 text-gray-700" />
-            ) : (
-              <div className="flex items-center gap-4">
-                <button className="relative p-1.5 hover:bg-gray-100 rounded-full transition-colors">
-                  <ShoppingCart className="h-5 w-5 text-gray-700" />
-                  <span className="absolute top-0 right-0 h-4 w-4 bg-blue-600 text-white text-xs rounded-full flex items-center justify-center">
-                    0
-                  </span>
-                </button>
-                <Menu className="h-5 w-5 text-gray-700" />
-              </div>
-            )}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <button className="relative p-1.5 hover:bg-gray-100 rounded-full transition-colors">
+              <ShoppingCart className="h-5 w-5 text-gray-700" />
+              <span className="absolute top-0 right-0 h-4 w-4 bg-blue-600 text-white text-xs rounded-full flex items-center justify-center">
+                0
+              </span>
+            </button>
+
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+            >
+              {isMenuOpen ? (
+                <X className="h-5 w-5 text-gray-700" />
+              ) : (
+                <div className="flex items-center gap-4">
+                  <Menu className="h-5 w-5 text-gray-700" />
+                </div>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
