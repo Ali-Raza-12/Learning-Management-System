@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducers from "../features/authentication/authSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import authReducer from "../features/authentication/authSlice";
+import { filterReducer } from "../features/filters/filterSlice"; 
 import {
   persistStore,
   persistReducer,
@@ -12,18 +13,24 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+// 1. Combine your slices
+const rootReducer = combineReducers({
+  auth: authReducer,
+  filter: filterReducer,
+});
 
+// 2. Create a single persisted reducer for the whole root
 const persistConfig = {
-    key: 'root',
-    storage,
+  key: "root",
+  storage,
+  whitelist: ["auth", "filter"],  
 };
 
-const persistedAuthReducer = persistReducer(persistConfig, authReducers);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// 3. Use that persistedReducer directly in configureStore
 export const store = configureStore({
-  reducer: {
-    auth: persistedAuthReducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -32,4 +39,4 @@ export const store = configureStore({
     }),
 });
 
-export const Persistor = persistStore(store);
+export const persistor = persistStore(store);

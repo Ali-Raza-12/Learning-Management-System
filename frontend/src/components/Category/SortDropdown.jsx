@@ -1,27 +1,39 @@
-import React from "react";
-import { ChevronDown } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Button from "../Button/Button";
 
 const sortOptions = [
-  { label: "Relevance", value: "relevance" },
-  { label: "Price: Low to High", value: "price-asc" },
-  { label: "Price: High to Low", value: "price-desc" },
-  { label: "Rating", value: "rating" },
-  { label: "Newest", value: "newest" },
+  { label: "Relevance",        value: "relevance" },
+  { label: "Price: Low to High",  value: "price-asc" },
+  { label: "Price: High to Low",  value: "price-desc" },
+  { label: "Rating",           value: "rating" },
+  { label: "Newest",           value: "newest" },
 ];
 
 const SortDropdown = ({ sort, onSortChange }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef(null);
+
+  // Close the dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const sortButtonText =
-    sortOptions.find((option) => option.value === sort)?.label || "Relevance";
+    sortOptions.find((opt) => opt.value === sort)?.label || "Relevance";
 
   return (
-    <div className="relative">
+    <div className="relative" ref={wrapperRef}>
       <Button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((open) => !open)}
         text={sortButtonText}
-        icon={<ChevronDown size={16} />}
+        icon={ isOpen ? <ChevronUp size={16}/> : <ChevronDown size={16} />}
         btnClass="border px-4 py-2 hover:bg-gray-100"
         iconClass="ml-2"
       />

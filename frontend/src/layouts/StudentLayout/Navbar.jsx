@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { categories } from "../../data/dummy1";
 import { logout } from "../../features/authentication/authSlice";
-import { useNavigate } from "react-router-dom";
 import {
   Search,
   ShoppingCart,
@@ -17,10 +16,12 @@ import {
   UserPlus,
   LogOut,
 } from "lucide-react";
+import { toggleCategoryFilter } from "../../features/filters/filterSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const categoryRef = useRef(null);
+  const profileRef = useRef(null);
   const { isLoggedIn, user } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -28,7 +29,17 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isDropdownOpen && !event.target.closest(".relative")) {
+      if (isCategoryOpen && 
+        categoryRef.current &&
+        !categoryRef.current.contains(event.target)
+      ) {
+        setIsCategoryOpen(false);
+      }
+
+      if (isDropdownOpen &&
+        profileRef.current &&
+        !profileRef.current.contains(event.target)
+      ) {
         setIsDropdownOpen(false);
       }
     };
@@ -53,7 +64,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-5 xl:space-x-6">
             {/* Categories Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={categoryRef}>
               <button
                 onClick={() => setIsCategoryOpen(!isCategoryOpen)}
                 className="flex items-center space-x-1 text-base text-gray-700 hover:text-blue-600 transition-colors"
@@ -72,7 +83,11 @@ const Navbar = () => {
                   {categories.map((category) => (
                     <Link
                       key={category}
-                      to={`/category/${category.toLowerCase()}`}
+                      onClick={() => { 
+                        dispatch(toggleCategoryFilter(category));
+                        setIsCategoryOpen(false);
+                      }}
+                      to={'/category'}
                       className="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors text-base"
                     >
                       {category}
@@ -83,7 +98,7 @@ const Navbar = () => {
             </div>
 
             {/* Search Bar */}
-            <div className="relative">
+            <div className="relative" >
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
@@ -111,7 +126,7 @@ const Navbar = () => {
 
             {/* Auth Buttons - Enhanced Version */}
             {isLoggedIn ? (
-              <div className="relative">
+              <div className="relative" useRef={profileRef}>
                 {/* Profile Button with Dropdown */}
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}

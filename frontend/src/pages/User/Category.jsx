@@ -1,161 +1,42 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Filter } from "lucide-react";
 import HomeBanner from "../../components/Home/HomeBanner";
 import Button from "../../components/Button/Button";
-import { TopCourses, TopInstructor } from "../../data/dummy1";
+import { TopCourses } from "../../data/dummy1";
 
 // Components
 import CourseCard from "../../components/Category/CoursesCard";
-// import InstructorCard from "../../components/Category/InstructorCard";
 import Pagination from "../../components/Category/Pagination";
 import FilterSidebar from "../../components/Category/FilterSidebar";
 import SortDropdown from "../../components/Category/SortDropdown";
-import NoResults from "../../components/Category/NoResults";
-
-// const toast = {
-//   title: () => {},
-//   description: () => {},
-// };
+import { selectFilteredCourses } from "../../features/filters/selector";
+import { useSelector } from "react-redux";
 
 const Category = () => {
-  const [filters, setFilters] = useState({
-    rating: null,
-    chapters: [],
-    price: [],
-    category: [],
-    level: [],
-  });
+
+
+  // UI state only
+  const [isFilterOpen, setIsFilterOpen] = React.useState(false);
+  const filteredCourses = useSelector(selectFilteredCourses);
+  if (!filteredCourses) return null;
 
   const [sort, setSort] = useState("relevance");
-  const [currentPage, setCurrentPage] = useState(1);
-  const coursesPerPage = 6;
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-
-  const filteredCourses = TopCourses.filter((course) => {
-    // Rating filter
-    if (filters.rating !== null && course.rating < filters.rating) return false;
-
-    // Chapters filter
-    if (filters.chapters.length > 0) {
-      const chapterMatches = filters.chapters.some((range) => {
-        if (range === "1-10")
-          return course.chapters >= 1 && course.chapters <= 10;
-        if (range === "10-15")
-          return course.chapters >= 10 && course.chapters <= 15;
-        if (range === "15-20")
-          return course.chapters >= 15 && course.chapters <= 20;
-        if (range === "20-25")
-          return course.chapters >= 20 && course.chapters <= 25;
-        if (range === "above-25") return course.chapters > 25;
-        return false;
-      });
-      if (!chapterMatches) return false;
+  
+  const sortedCourses = useMemo(() => {
+    const arr = [...filteredCourses];
+    switch (sort) {
+      case "price-asc":
+        return [...filteredCourses].sort((a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1)));
+      case "price-desc":
+        return [...filteredCourses].sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)));
+      case "rating":
+        return [...filteredCourses].sort((a, b) => b.rating - a.rating);  
+      case "newest":
+        return [...filteredCourses].sort((a, b) => new Date(b.date) - new Date(a.date));
+      default:
+        return arr;
     }
-
-    // Price filter
-    if (filters.price.length > 0) {
-      const price = parseFloat(course.price.replace("$", ""));
-      const priceMatch = filters.price.some((range) => {
-        if (range === "free") return price === 0;
-        if (range === "0-50") return price > 0 && price <= 50;
-        if (range === "50-100") return price > 50 && price <= 100;
-        if (range === "100+") return price > 100;
-        return false;
-      });
-      if (!priceMatch) return false;
-    }
-
-    // Category filter
-    if (
-      filters.category.length > 0 &&
-      !filters.category.includes(course.category)
-    ) {
-      return false;
-    }
-
-    // Level filter
-    if (filters.level.length > 0 && !filters.level.includes(course.level)) {
-      return false;
-    }
-
-    return true;
-  });
-
-  const sortedCourses = [...filteredCourses].sort((a, b) => {
-    if (sort === "price-asc") {
-      return (
-        parseFloat(a.price.replace("$", "")) -
-        parseFloat(b.price.replace("$", ""))
-      );
-    }
-    if (sort === "price-desc") {
-      return (
-        parseFloat(b.price.replace("$", "")) -
-        parseFloat(a.price.replace("$", ""))
-      );
-    }
-    if (sort === "rating") {
-      return b.rating - a.rating;
-    }
-    if (sort === "newest") {
-      return new Date(b.date) - new Date(a.date);
-    }
-    return 0;
-  });
-
-  const totalPages = Math.ceil(sortedCourses.length / coursesPerPage);
-  const indexOfLastCourse = currentPage * coursesPerPage;
-  const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = sortedCourses.slice(
-    indexOfFirstCourse,
-    indexOfLastCourse
-  );
-
-  const handleFilterChange = (filterType, value) => {
-    setFilters((prev) => ({ ...prev, [filterType]: value }));
-    setCurrentPage(1);
-    // toast({
-    //   title: "Filters Updated",
-    //   description: "Course list has been filtered based on your selection.",
-    // });
-  };
-
-  const handleSortChange = (value) => {
-    setSort(value);
-    const sortLabel = sortOptions.find(
-      (option) => option.value === value
-    )?.label;
-    // toast({
-    //   title: "Sorting Applied",
-    //   description: `Courses sorted by ${sortLabel}.`,
-    // });
-  };
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const clearAllFilters = () => {
-    setFilters({
-      rating: null,
-      chapters: [],
-      price: [],
-      category: [],
-      level: [],
-    });
-    // toast({
-    //   title: "Filters Cleared",
-    //   description: "All filters have been removed.",
-    // });
-  };
-
-  const activeFiltersCount =
-    (filters.rating !== null ? 1 : 0) +
-    filters.chapters.length +
-    filters.price.length +
-    filters.category.length +
-    filters.level.length;
+  }, [filteredCourses, sort]);
 
   return (
     <div className="xs:px-6 sm:px-2 sm:container sm:mx-auto py-20">
@@ -178,57 +59,44 @@ const Category = () => {
             text="Filter"
             icon={<Filter size={18} className="mr-2" />}
             btnClass="relative border px-4 py-2 hover:bg-gray-100"
-            onClick={() => setIsFilterOpen(!isFilterOpen)} // Optional: You can handle this by wrapping Button or modifying Button to accept onClick
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
           />
 
-          <SortDropdown sort={sort} onSortChange={handleSortChange} />
+          <SortDropdown sort={sort} onSortChange={setSort} />
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
         <div className={`lg:block ${isFilterOpen ? "block" : "hidden"}`}>
-          <FilterSidebar
-            filters={filters}
-            onFilterChange={handleFilterChange}
-          />
+          <FilterSidebar />
         </div>
 
         <div className="flex-1">
           <div className="mb-6">
             <p className="text-gray-600">
               Showing{" "}
-              <span className="font-medium">{sortedCourses.length}</span>{" "}
+              <span className="font-medium">{filteredCourses.length}</span>{" "}
               courses
-              {activeFiltersCount > 0 ? " with applied filters" : ""}
             </p>
           </div>
 
-          {sortedCourses.length > 0 ? (
-            <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {currentCourses.map((course) => (
-                  <CourseCard key={course.id} course={course} />
-                ))}
+          {/* Placeholder for courses list - replace with your actual data mapping */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sortedCourses.length === 0 ? (
+              <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center  py-16 bg-gray-100 rounded-lg">
+                <p className="text-gray-500">No courses found</p>
               </div>
+            ) : (
+              sortedCourses
+                .slice(0, 6)
+                .map((course) => <CourseCard key={course.id} course={course} />)
+            )}
+          </div>
 
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-              />
-            </>
-          ) : (
-            <NoResults onClearFilters={clearAllFilters} />
-          )}
+          <Pagination />
 
-          {/* <div className="mt-16">
-            <HomeBanner title="Popular Mentors" btnText="See All" />
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {TopInstructor.map((instructor) => (
-                <InstructorCard key={instructor.id} instructor={instructor} />
-              ))}
-            </div>
-          </div> */}
+          {/* Placeholder for no results */}
+          {/* <NoResults /> */}
 
           <div className="mt-16">
             <HomeBanner title="Featured Courses" btnText="See All" />

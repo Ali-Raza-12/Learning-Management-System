@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import FilterSection from "./FilterSection";
 import Rating from "./Rating";
 import { categories } from "../../data/dummy1";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleCategoryFilter, clearFilters } from "../../features/filters/filterSlice";
 
-const FilterSidebar = ({ filters, onFilterChange }) => {
+const FilterSidebar = () => {
+  const dispatch = useDispatch();
+  const selectedCategories = useSelector(
+    (state) => state.filter.filters.category
+  );
   const [openSections, setOpenSections] = useState({
     rating: true,
     chapters: true,
@@ -17,7 +23,6 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
   };
 
   const ratings = [5, 4, 3, 2, 1];
-
   const chapterRanges = [
     { label: "1-10 chapters", value: "1-10" },
     { label: "10-15 chapters", value: "10-15" },
@@ -25,32 +30,38 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
     { label: "20-25 chapters", value: "20-25" },
     { label: "25+ chapters", value: "above-25" },
   ];
-
   const priceRanges = [
     { label: "Free", value: "free" },
     { label: "$0 - $50", value: "0-50" },
     { label: "$50 - $100", value: "50-100" },
     { label: "$100+", value: "100+" },
   ];
-
-
   const levels = ["Beginner", "Intermediate", "Advanced"];
 
-  const handleRatingChange = (rating) => {
-    onFilterChange("rating", filters.rating === rating ? null : rating);
-  };
-
-  const handleCheckboxChange = (filterType, value) => {
-    const currentValues = filters[filterType];
-    const newValues = currentValues.includes(value)
-      ? currentValues.filter((v) => v !== value)
-      : [...currentValues, value];
-
-    onFilterChange(filterType, newValues);
-  };
+  const handleClearAll = () => {
+    dispatch(clearFilters());
+  }
 
   return (
     <div className="w-full lg:w-72 bg-white p-6 rounded-xl shadow-sm border border-gray-200 h-fit">
+      
+      {/* Add Clear All Button at the top */}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="font-bold text-lg">Filters</h2>
+        <button
+          onClick={handleClearAll}
+          disabled={selectedCategories.length === 0}
+          className={`text-sm ${
+            selectedCategories.length === 0
+              ? "text-gray-400 cursor-not-allowed"
+              : "text-primary-600 hover:underline"
+          }`}
+        >
+          Clear All
+        </button>
+      </div>
+
+      {/* Rating Section */}
       <FilterSection
         title="Rating"
         isOpen={openSections.rating}
@@ -59,12 +70,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
         {ratings.map((rating) => (
           <button
             key={rating}
-            onClick={() => handleRatingChange(rating)}
-            className={`flex items-center w-full gap-2 py-1 px-2 rounded-md transition-colors ${
-              filters.rating === rating
-                ? "bg-primary-100 text-primary-600"
-                : "hover:bg-gray-100"
-            }`}
+            className="flex items-center w-full gap-2 py-1 px-2 rounded-md transition-colors hover:bg-gray-100"
           >
             <Rating value={rating} />
             <span className="text-sm text-gray-600">& up</span>
@@ -72,6 +78,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
         ))}
       </FilterSection>
 
+      {/* Chapters Section */}
       <FilterSection
         title="Number of Chapters"
         isOpen={openSections.chapters}
@@ -84,8 +91,6 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
           >
             <input
               type="checkbox"
-              checked={filters.chapters.includes(range.value)}
-              onChange={() => handleCheckboxChange("chapters", range.value)}
               className="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500"
             />
             <span className="text-gray-700">{range.label}</span>
@@ -93,6 +98,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
         ))}
       </FilterSection>
 
+      {/* Price Section */}
       <FilterSection
         title="Price"
         isOpen={openSections.price}
@@ -105,8 +111,6 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
           >
             <input
               type="checkbox"
-              checked={filters.price.includes(range.value)}
-              onChange={() => handleCheckboxChange("price", range.value)}
               className="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500"
             />
             <span className="text-gray-700">{range.label}</span>
@@ -114,6 +118,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
         ))}
       </FilterSection>
 
+      {/* Category Section */}
       <FilterSection
         title="Category"
         isOpen={openSections.category}
@@ -126,8 +131,8 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
           >
             <input
               type="checkbox"
-              checked={filters.category.includes(category)}
-              onChange={() => handleCheckboxChange("category", category)}
+              checked={selectedCategories.includes(category)}
+              onChange={() => dispatch(toggleCategoryFilter(category))}
               className="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500"
             />
             <span className="text-gray-700">{category}</span>
@@ -135,6 +140,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
         ))}
       </FilterSection>
 
+      {/* Level Section */}
       <FilterSection
         title="Level"
         isOpen={openSections.level}
@@ -147,8 +153,6 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
           >
             <input
               type="checkbox"
-              checked={filters.level.includes(level)}
-              onChange={() => handleCheckboxChange("level", level)}
               className="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500"
             />
             <span className="text-gray-700">{level}</span>
